@@ -168,10 +168,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2025-03-30 22:59:20 / Modified: 23:04:33" itemprop="dateCreated datePublished" datetime="2025-03-30T22:59:20+08:00">2025-03-30</time>
+              <time title="Created: 2025-03-30 22:59:20" itemprop="dateCreated datePublished" datetime="2025-03-30T22:59:20+08:00">2025-03-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-03-31 12:29:59" itemprop="dateModified" datetime="2025-03-31T12:29:59+08:00">2025-03-31</time>
+              </span>
 
           
 
@@ -188,14 +194,48 @@
 <p>rustscan 用于识别开放的端口以及服务类型</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustscan -a 192.168.0.1 -b 10000 -r 1-65535 -- -sCV &gt; 192.168.0.1.<span class="built_in">log</span> &amp;</span><br></pre></td></tr></table></figure>
 
+<p>安装</p>
+<ul>
+<li><p>Mac</p>
+<p><code>brew install rustscan</code></p>
+</li>
+<li><p>Windows</p>
+<p>custom install</p>
+</li>
+<li><p>Debian</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/RustScan/RustScan/releases">https://github.com/RustScan/RustScan/releases</a></p>
+</li>
+<li><p>Docker</p>
+<p>docker run -it –rm –name rustscan rustscan&#x2F;rustscan:2.1.1 <rustscan arguments here></p>
+</li>
+</ul>
 <h3 id="ffuf"><a href="#ffuf" class="headerlink" title="ffuf"></a>ffuf</h3><hr>
 <p>ffuf 用于FUZZ，可以用于模糊搜索子域名，目录，GET&#x2F;POST 参数</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/ffuf/ffuf">https://github.com/ffuf/ffuf</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffuf -u &lt;http://topology.htb&gt; -w wordlist.txt  -H <span class="string">&quot;Host: FUZZ.topology.htb&quot;</span> -<span class="built_in">fc</span> 200</span><br><span class="line"></span><br><span class="line">ffuf -w /path/to/postdata.txt -X POST -d <span class="string">&quot;username=admin\\&amp;password=FUZZ&quot;</span> -u &lt;https://target/login.php&gt; -<span class="built_in">fc</span> 200</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li><p>安装</p>
+<ul>
+<li><p>Custom install </p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ffuf/ffuf">https://github.com/ffuf/ffuf</a></p>
+</li>
+<li><p>Mac</p>
+<p><code>brew install ffuf</code></p>
+</li>
+<li><p>Go</p>
+<p><code>go install github.com/ffuf/ffuf/v2@latest</code></p>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h3><hr>
 <p>dirsearch 用于扫描网站目录结构</p>
 <p><code>dirsearch -u http://example.com/</code></p>
+<ul>
+<li><p>安装</p>
+<p><code>pip install dirsearch</code></p>
+</li>
+</ul>
 
       
     </div>
