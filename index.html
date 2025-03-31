@@ -216,7 +216,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-03-31 23:34:24" itemprop="dateModified" datetime="2025-03-31T23:34:24+08:00">2025-03-31</time>
+                <time title="Modified: 2025-04-01 00:51:03" itemprop="dateModified" datetime="2025-04-01T00:51:03+08:00">2025-04-01</time>
               </span>
 
           <br>
@@ -225,7 +225,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>745</span>
+              <span>748</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -244,35 +244,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="扫描（端口、子域名等）"><a href="#扫描（端口、子域名等）" class="headerlink" title="扫描（端口、子域名等）"></a>扫描（端口、子域名等）</h2><h3 id="rustscan"><a href="#rustscan" class="headerlink" title="rustscan"></a>rustscan</h3><hr>
-<p>rustscan 用于识别开放的端口以及服务类型</p>
-<ul>
-<li><p>用法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rustscan -a 192.168.0.1 -b 10000 -r 1-65535 -- -sCV &gt; 192.168.0.1.<span class="built_in">log</span> &amp;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># custom install</span></span><br><span class="line">https://github.com/RustScan/RustScan/releases</span><br><span class="line"><span class="comment"># mac</span></span><br><span class="line">brew install rustscan</span><br><span class="line"><span class="comment"># docker</span></span><br><span class="line">docker run -it --<span class="built_in">rm</span> --name rustscan rustscan/rustscan:2.1.1 &lt;rustscan arguments here&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="ffuf"><a href="#ffuf" class="headerlink" title="ffuf"></a>ffuf</h3><hr>
-<p>ffuf 用于FUZZ，可以用于模糊搜索子域名，目录，GET&#x2F;POST 参数</p>
-<ul>
-<li><p>用法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ffuf -u &lt;http://topology.htb&gt; -w wordlist.txt  -H <span class="string">&quot;Host: FUZZ.topology.htb&quot;</span> -<span class="built_in">fc</span> 200</span><br><span class="line"></span><br><span class="line">ffuf -w /path/to/postdata.txt -X POST -d <span class="string">&quot;username=admin\\&amp;password=FUZZ&quot;</span> -u &lt;https://target/login.php&gt; -<span class="built_in">fc</span> 200</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># custom install</span></span><br><span class="line">https://github.com/ffuf/ffuf</span><br><span class="line"><span class="comment"># mac</span></span><br><span class="line">brew install ffuf</span><br><span class="line"><span class="comment"># go</span></span><br><span class="line">go install github.com/ffuf/ffuf/v2@latest</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h3><hr>
-<p>dirsearch 用于扫描网站目录结构</p>
-<ul>
-<li>用法</li>
-</ul>
-<p>​	<code>	dirsearch -u http://example.com/</code></p>
-<ul>
-<li>安装</li>
-</ul>
-<p>​	<code>	pip install dirsearch</code></p>
-
+          <p>用于记录渗透初期信息搜集阶段的常见姿势，包括：扫描（端口、子域名、目录等）</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/03/30/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E9%98%B6%E6%AE%B5/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -314,10 +294,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2025-03-30 13:47:34 / Modified: 13:47:39" itemprop="dateCreated datePublished" datetime="2025-03-30T13:47:34+08:00">2025-03-30</time>
+              <time title="Created: 2025-03-30 13:47:34" itemprop="dateCreated datePublished" datetime="2025-03-30T13:47:34+08:00">2025-03-30</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-04-01 00:52:07" itemprop="dateModified" datetime="2025-04-01T00:52:07+08:00">2025-04-01</time>
+              </span>
 
           <br>
             <span class="post-meta-item" title="Symbols count in article">
@@ -344,20 +330,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <p>Welcome to hexo! This is your very first post.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/03/30/hello-world/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
