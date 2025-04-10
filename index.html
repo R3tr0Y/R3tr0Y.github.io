@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/04/10/hackthebox-whiterabbit/">
+    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/04/10/HTB-WhiteRabbit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -199,7 +199,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2025/04/10/hackthebox-whiterabbit/" class="post-title-link" itemprop="url">hackthebox-whiterabbit</a>
+            <a href="/2025/04/10/HTB-WhiteRabbit/" class="post-title-link" itemprop="url">HTB-WhiteRabbit</a>
         </h2>
 
         <div class="post-meta">
@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-04-10 10:16:44 / Modified: 10:43:04" itemprop="dateCreated datePublished" datetime="2025-04-10T10:16:44+08:00">2025-04-10</time>
+              <time title="Created: 2025-04-10 10:16:44 / Modified: 10:55:03" itemprop="dateCreated datePublished" datetime="2025-04-10T10:16:44+08:00">2025-04-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,22 +247,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="whiterabbit"><a href="#whiterabbit" class="headerlink" title="whiterabbit"></a>whiterabbit</h1><p><img src="/2025/04/10/hackthebox-whiterabbit/image-20250410101919492.png" alt="image-20250410101919492"></p>
-<h2 id="信息搜集阶段"><a href="#信息搜集阶段" class="headerlink" title="信息搜集阶段"></a>信息搜集阶段</h2><p>首先访问IP地址，发现自动跳转为whiterabbit.htb，那么</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/hosts</span><br><span class="line"></span><br><span class="line"># 写入以下内容</span><br><span class="line">10.10.11.63 whiterabbit.htb</span><br><span class="line"></span><br><span class="line"># :wq</span><br></pre></td></tr></table></figure>
-
-<p>dirsearch 扫描该网站没发现什么内容，指纹分析出是 Caddy 的网站，主页也没什么敏感信息泄露，尝试爆破子域名获取更多资产信息。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># ffuf 枚举子域名</span><br><span class="line">ffuf -u http://whiterabbit.htb/ -w /Users/r3tr0/hack/KaliLists/SecLists-master/Discovery/dns/subdomains-top1million-1100</span><br><span class="line">00.txt -H &quot;Host: FUZZ.whiterabbit.htb&quot; -H &quot;X-Forwarded-For: localhost&quot;</span><br></pre></td></tr></table></figure>
-
-<p>运行后发现出现大量返回size为0的302跳转，那么这明显不是我们想要的回显，把他们过滤掉。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">➜  whiterabbit ffuf -u http://whiterabbit.htb/ -w /Users/r3tr0/hack/KaliLists/SecLists-master/Discovery/dns/subdomains-top1million-1100</span><br><span class="line">00.txt -H &quot;Host: FUZZ.whiterabbit.htb&quot; -H &quot;X-Forwarded-For: localhost&quot; -fs 0</span><br><span class="line"></span><br><span class="line">        /&#x27;___\  /&#x27;___\           /&#x27;___\       </span><br><span class="line">       /\ \__/ /\ \__/  __  __  /\ \__/       </span><br><span class="line">       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      </span><br><span class="line">        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      </span><br><span class="line">         \ \_\   \ \_\  \ \____/  \ \_\       </span><br><span class="line">          \/_/    \/_/   \/___/    \/_/       </span><br><span class="line"></span><br><span class="line">       v2.1.0-dev</span><br><span class="line">________________________________________________</span><br><span class="line"></span><br><span class="line"> :: Method           : GET</span><br><span class="line"> :: URL              : http://whiterabbit.htb/</span><br><span class="line"> :: Wordlist         : FUZZ: /Users/r3tr0/hack/KaliLists/SecLists-master/Discovery/dns/subdomains-top1million-110000.txt</span><br><span class="line"> :: Header           : Host: FUZZ.whiterabbit.htb</span><br><span class="line"> :: Header           : X-Forwarded-For: localhost</span><br><span class="line"> :: Follow redirects : false</span><br><span class="line"> :: Calibration      : false</span><br><span class="line"> :: Timeout          : 10</span><br><span class="line"> :: Threads          : 40</span><br><span class="line"> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500</span><br><span class="line"> :: Filter           : Response size: 0</span><br><span class="line">________________________________________________</span><br><span class="line"></span><br><span class="line">status                  [Status: 302, Size: 32, Words: 4, Lines: 1, Duration: 92ms]</span><br><span class="line">:: Progress: [114441/114441] :: Job [1/1] :: 421 req/sec :: Duration: [0:05:02] :: Errors: 0 ::</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>注意，这里需要过滤掉size为0的数据包，因为可能正常返回的数据包也是302跳转的状态码，但是size不会为0，或者直接使用gobuster 的 vhost模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">➜  whiterabbit gobuster vhost -u http://whiterabbit.htb/  --append-domain -w=/Users/r3tr0/hack/KaliLists/SecLists-master/Discovery/DNS/</span><br><span class="line">subdomains-top1million-110000.txt</span><br><span class="line">===============================================================</span><br><span class="line">Gobuster v3.6</span><br><span class="line">by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)</span><br><span class="line">===============================================================</span><br><span class="line">[+] Url:             http://whiterabbit.htb/</span><br><span class="line">[+] Method:          GET</span><br><span class="line">[+] Threads:         10</span><br><span class="line">[+] Wordlist:        /Users/r3tr0/hack/KaliLists/SecLists-master/Discovery/DNS/subdomains-top1million-110000.txt</span><br><span class="line">[+] User Agent:      gobuster/3.6</span><br><span class="line">[+] Timeout:         10s</span><br><span class="line">[+] Append Domain:   true</span><br><span class="line">===============================================================</span><br><span class="line">Starting gobuster in VHOST enumeration mode</span><br><span class="line">===============================================================</span><br><span class="line">Found: status.whiterabbit.htb Status: 302 [Size: 32] [--&gt; /dashboard]</span><br><span class="line">Progress: 114441 / 114442 (100.00%)</span><br><span class="line">===============================================================</span><br><span class="line">Finished</span><br><span class="line">===============================================================</span><br></pre></td></tr></table></figure>
-
-</blockquote>
-
+          <p>WhiteRabbit</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/04/10/HTB-WhiteRabbit/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
