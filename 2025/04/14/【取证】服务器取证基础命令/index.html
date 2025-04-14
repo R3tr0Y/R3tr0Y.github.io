@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"r3tr0y.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="r3tr0&#39;s blog">
-<meta property="og:url" content="http://r3tr0y.github.io/archives/2025/04/index.html">
+  <meta name="description" content="服务器取证命令行获取信息的命令大全，断网环境下的急救包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【取证】服务器取证基础命令">
+<meta property="og:url" content="http://r3tr0y.github.io/2025/04/14/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E8%AF%81%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/index.html">
 <meta property="og:site_name" content="r3tr0&#39;s blog">
+<meta property="og:description" content="服务器取证命令行获取信息的命令大全，断网环境下的急救包">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-14T02:43:55.000Z">
+<meta property="article:modified_time" content="2025-04-14T07:58:55.696Z">
 <meta property="article:author" content="r3tr0">
+<meta property="article:tag" content="forensics">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://r3tr0y.github.io/archives/2025/04/">
+<link rel="canonical" href="http://r3tr0y.github.io/2025/04/14/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E8%AF%81%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
 
 
 <script id="page-configurations">
@@ -36,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | r3tr0's blog</title>
+  <title>【取证】服务器取证基础命令 | r3tr0's blog</title>
   
 
 
@@ -179,150 +184,183 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 9 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/04/14/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E8%AF%81%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="r3tr0">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="r3tr0's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【取证】服务器取证基础命令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2025-04-14 10:43:55 / Modified: 15:58:55" itemprop="dateCreated datePublished" datetime="2025-04-14T10:43:55+08:00">2025-04-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>923</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+            <div class="post-description">服务器取证命令行获取信息的命令大全，断网环境下的急救包</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2025</span>
-    </div>
+        <h1 id="【取证】服务器取证基础命令"><a href="#【取证】服务器取证基础命令" class="headerlink" title="【取证】服务器取证基础命令"></a>【取证】服务器取证基础命令</h1><p>服务器一般均为linux系统下的服务器，如果遇到windows server 等的服务器题目，可以直接仿真之后通过图形化界面当做常规取证题目。</p>
+<p>linux 的基础命令部分就先跳过了，以下主要是针对取证题目涉及的命令。</p>
+<h2 id="服务器信息类"><a href="#服务器信息类" class="headerlink" title="服务器信息类"></a>服务器信息类</h2><blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 服务器内核版本、hostname、主机名等</span><br><span class="line">uname -a </span><br><span class="line">uname -r </span><br><span class="line">uname -n</span><br><span class="line"></span><br><span class="line"># </span><br></pre></td></tr></table></figure>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+</blockquote>
+<h2 id="宝塔"><a href="#宝塔" class="headerlink" title="宝塔"></a>宝塔</h2><blockquote>
+<p>linux 宝塔面板的安装目录在 &#x2F;www&#x2F; 下，具体包含以下目录：</p>
+<table>
+<thead>
+<tr>
+<th><strong>目录</strong></th>
+<th><strong>作用</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Backup</td>
+<td>备份文件目录，保存数据库备份、站点备份</td>
+</tr>
+<tr>
+<td>Server</td>
+<td>服务目录，包括面板自身程序目录、安装的各类服务目录</td>
+</tr>
+<tr>
+<td>wwwlogs</td>
+<td>站点日志目录，保存网站的访问日志及错误日志</td>
+</tr>
+<tr>
+<td>wwwroot</td>
+<td>站点根目录，网站源码存放在该目录下</td>
+</tr>
+<tr>
+<td>.Recycle_bin</td>
+<td>保存文件删除操作后的数据，同回收站的功能</td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>basic auth </p>
+<p>用户名和密码保存在 &#x2F;www&#x2F;server&#x2F;panel&#x2F;config&#x2F;basic_auth.json 文件中，用户名和密码加密方式为MD5.可以在终端中输入命令查看：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /www/server/panel/config</span><br><span class="line">cat basic_auth.json</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-04-14T10:43:55+08:00"
-              content="2025-04-14">
-          04-14
-        </time>
-      </div>
+<p>或者使用 bt 23 民兵关闭 basic auth 认证</p>
+</li>
+<li><p>IP 访问限制</p>
+<p>删除limitip.conf</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /www/server/panel/data/limitip.conf</span><br></pre></td></tr></table></figure>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/04/14/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E8%AF%81%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" itemprop="url">
-            <span itemprop="name">【取证】服务器取证基础命令</span>
-          </a>
-      </div>
+<p>或者 bt 13 命令取消IP访问限制</p>
+</li>
+<li><p>安全入口限制</p>
+<p>删除admin_path.pl</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /www/server/panel/data/admin_path.pl</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-04-11T11:54:57+08:00"
-              content="2025-04-11">
-          04-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/04/11/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91k8s%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">
-            <span itemprop="name">【取证】k8s集群服务器</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-04-10T10:16:44+08:00"
-              content="2025-04-10">
-          04-10
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/04/10/HTB-WhiteRabbit/" itemprop="url">
-            <span itemprop="name">HTB-WhiteRabbit</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-04-09T11:55:39+08:00"
-              content="2025-04-09">
-          04-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/04/09/%E6%98%A5%E7%A7%8B%E4%BA%91%E5%A2%83-CVE-2024-9047-WordPress-FileUpload-plugin/" itemprop="url">
-            <span itemprop="name">春秋云境-CVE-2024-9047-WordPress_FileUpload_plugin</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-04-09T11:23:27+08:00"
-              content="2025-04-09">
-          04-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/04/09/%E6%98%A5%E7%A7%8B%E4%BA%91%E5%A2%83-CVE-2024-32113-Apache-OFBiz/" itemprop="url">
-            <span itemprop="name">春秋云境-CVE-2024-32113-Apache_OFBiz</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2025-04-02T14:21:15+08:00"
-              content="2025-04-02">
-          04-02
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/04/02/%E6%9F%90%E5%90%83%E7%93%9C%E7%BD%91%E7%AB%99%E7%9A%84%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/" itemprop="url">
-            <span itemprop="name">某吃瓜网站渗透记录</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+<p>或者bt 14查看 ，bt 11删除安全入口</p>
+</li>
+<li><p>面板操作日志被清空查看方式</p>
+<p>记录在 &#x2F;www&#x2F;server&#x2F;panel&#x2F;logs&#x2F;request，可以查看日志进行分析</p>
+</li>
+<li><p>查看完整的宝塔账号</p>
+<p>绑定的账号会记录在 &#x2F;www&#x2F;server&#x2F;panel&#x2F;data&#x2F;userInfo.json 目录下，可以在终端使用命令进行查看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /www/server/panel/data</span><br><span class="line">cat userInfo.json</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>r3tr0
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://r3tr0y.github.io/2025/04/14/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E8%AF%81%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="【取证】服务器取证基础命令">http://r3tr0y.github.io/2025/04/14/【取证】服务器取证基础命令/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/forensics/" rel="tag"># forensics</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/04/11/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91k8s%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="prev" title="【取证】k8s集群服务器">
+      <i class="fa fa-chevron-left"></i> 【取证】k8s集群服务器
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
 
@@ -375,6 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E8%AF%81%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">【取证】服务器取证基础命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BF%A1%E6%81%AF%E7%B1%BB"><span class="nav-number">1.1.</span> <span class="nav-text">服务器信息类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9D%E5%A1%94"><span class="nav-number">1.2.</span> <span class="nav-text">宝塔</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
