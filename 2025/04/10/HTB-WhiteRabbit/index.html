@@ -28,8 +28,10 @@
 <meta property="og:description" content="WhiteRabbit 是 HackTheBox season7 的insane难度的machine，也是该赛季最后一台machine，是调动之后我再次有时间尝试HTB的赛季machine。（~~虽然很可能以失败告终~~）">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://r3tr0y.github.io/2025/04/10/HTB-WhiteRabbit/image-20250410101919492.png">
+<meta property="og:image" content="http://r3tr0y.github.io/2025/04/10/HTB-WhiteRabbit/image-20250410183302572.png">
+<meta property="og:image" content="http://r3tr0y.github.io/2025/04/10/HTB-WhiteRabbit/image-20250411172026027.png">
 <meta property="article:published_time" content="2025-04-10T02:16:44.000Z">
-<meta property="article:modified_time" content="2025-04-10T03:52:16.463Z">
+<meta property="article:modified_time" content="2025-04-11T09:24:35.669Z">
 <meta property="article:author" content="r3tr0">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="HTB">
@@ -216,10 +218,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2025-04-10 10:16:44 / Modified: 11:52:16" itemprop="dateCreated datePublished" datetime="2025-04-10T10:16:44+08:00">2025-04-10</time>
+              <time title="Created: 2025-04-10 10:16:44" itemprop="dateCreated datePublished" datetime="2025-04-10T10:16:44+08:00">2025-04-10</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2025-04-11 17:24:35" itemprop="dateModified" datetime="2025-04-11T17:24:35+08:00">2025-04-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -236,14 +244,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.5k</span>
+              <span>5.9k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>2 mins.</span>
+              <span>5 mins.</span>
             </span>
             <div class="post-description">WhiteRabbit 是 HackTheBox season7 的insane难度的machine，也是该赛季最后一台machine，是调动之后我再次有时间尝试HTB的赛季machine。（~~虽然很可能以失败告终~~）</div>
 
@@ -271,6 +279,23 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">➜  whiterabbit gobuster vhost -u http://whiterabbit.htb/  --append-domain -w=/Users/r3tr0/hack/KaliLists/SecLists-master/Discovery/DNS/</span><br><span class="line">subdomains-top1million-110000.txt</span><br><span class="line">===============================================================</span><br><span class="line">Gobuster v3.6</span><br><span class="line">by OJ Reeves (@TheColonial) &amp; Christian Mehlmauer (@firefart)</span><br><span class="line">===============================================================</span><br><span class="line">[+] Url:             http://whiterabbit.htb/</span><br><span class="line">[+] Method:          GET</span><br><span class="line">[+] Threads:         10</span><br><span class="line">[+] Wordlist:        /Users/r3tr0/hack/KaliLists/SecLists-master/Discovery/DNS/subdomains-top1million-110000.txt</span><br><span class="line">[+] User Agent:      gobuster/3.6</span><br><span class="line">[+] Timeout:         10s</span><br><span class="line">[+] Append Domain:   true</span><br><span class="line">===============================================================</span><br><span class="line">Starting gobuster in VHOST enumeration mode</span><br><span class="line">===============================================================</span><br><span class="line">Found: status.whiterabbit.htb Status: 302 [Size: 32] [--&gt; /dashboard]</span><br><span class="line">Progress: 114441 / 114442 (100.00%)</span><br><span class="line">===============================================================</span><br><span class="line">Finished</span><br><span class="line">===============================================================</span><br></pre></td></tr></table></figure>
 
 </blockquote>
+<p>dirsearch 扫描一下status子域名下的目录（已删除一些404无关结果）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">➜  whiterabbit dirsearch -u http://status.whiterabbit.htb/ --crawl</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3.post1</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460</span><br><span class="line"></span><br><span class="line">Output File: /Users/r3tr0/hack/hackthebox/machines/whiterabbit/reports/http_status.whiterabbit.htb/__25-04-10_15-56-53.txt</span><br><span class="line"></span><br><span class="line">Target: http://status.whiterabbit.htb/</span><br><span class="line"></span><br><span class="line">[15:56:53] Starting: </span><br><span class="line">[15:57:25] 301 -  179B  - /assets  -&gt;  /assets/</span><br><span class="line">[15:57:36] 200 -   15KB - /favicon.ico</span><br><span class="line">[15:57:45] 200 -  415B  - /manifest.json</span><br><span class="line">[15:57:46] 401 -    0B  - /metrics/</span><br><span class="line">[15:57:46] 401 -    0B  - /metrics</span><br><span class="line">[15:57:54] 200 -   25B  - /robots.txt</span><br><span class="line">[15:57:55] 301 -  189B  - /screenshots  -&gt;  /screenshots/</span><br><span class="line">[15:57:59] 404 -    2KB - /status/</span><br><span class="line">[15:57:59] 404 -    2KB - /status</span><br><span class="line">[15:57:59] 404 -    2KB - /status?full=true</span><br><span class="line">[15:57:59] 200 -   57KB - /assets/polyfills-legacy-COqB9mNb.js</span><br><span class="line">[15:57:59] 200 -  477KB - /assets/index-CYsZUv7d.js</span><br><span class="line">[15:58:02] 301 -  179B  - /Upload  -&gt;  /Upload/</span><br><span class="line">[15:58:02] 301 -  179B  - /upload  -&gt;  /upload/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p>再次递归扫描，查看扫描出来的目录还有什么东西（没有东西的目录不展示了）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">➜  whiterabbit dirsearch -u http://status.whiterabbit.htb/status/ --crawl --exclude-sizes 2KB</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3.post1</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460</span><br><span class="line"></span><br><span class="line">Output File: /Users/r3tr0/hack/hackthebox/machines/whiterabbit/reports/http_status.whiterabbit.htb/_status__25-04-10_18-27-59.txt</span><br><span class="line"></span><br><span class="line">Target: http://status.whiterabbit.htb/</span><br><span class="line"></span><br><span class="line">[18:27:59] Starting: status/</span><br><span class="line">[18:31:04] 200 -    3KB - /status/temp</span><br><span class="line">[18:31:07] 200 -  477KB - /assets/index-CYsZUv7d.js</span><br><span class="line">[18:31:07] 200 -   57KB - /assets/polyfills-legacy-COqB9mNb.js</span><br><span class="line"></span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p>访问 &#x2F;status&#x2F;temp</p>
+<p><img src="/2025/04/10/HTB-WhiteRabbit/image-20250410183302572.png" alt="image-20250410183302572"></p>
+<p>大发现！隐藏的域名都在这，全部加入hosts。</p>
+<p>第一个页面打开来发现是个钓鱼的登录页面，暂时搁置。</p>
+<p>第二个页面打开，发现了&#x3D;&#x3D;重要信息！&#x3D;&#x3D;</p>
+<p><img src="/2025/04/10/HTB-WhiteRabbit/image-20250411172026027.png" alt="image-20250411172026027"></p>
+<p>再次扫描看看</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">➜  whiterabbit dirsearch -u http://a668910b5514e.whiterabbit.htb/ --crawl --exclude-sizes 9B</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3.post1</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460</span><br><span class="line"></span><br><span class="line">Output File: /Users/r3tr0/hack/hackthebox/machines/whiterabbit/reports/http_a668910b5514e.whiterabbit.htb/__25-04-11_17-02-27.txt</span><br><span class="line"></span><br><span class="line">Target: http://a668910b5514e.whiterabbit.htb/</span><br><span class="line"></span><br><span class="line">[17:02:27] Starting: </span><br><span class="line">[17:02:57] 418 -    0B  - /.well-known/acme-challenge/dtfy</span><br><span class="line">[17:03:04] 403 -    2KB - /A</span><br><span class="line">[17:03:04] 403 -    2KB - /a</span><br><span class="line">[17:03:04] 200 -    5KB - /_assets/js/runtime.js?1716156900</span><br><span class="line">[17:03:08] 200 -    2MB - /_assets/js/app.js?1716156900</span><br><span class="line">[17:04:10] 200 -    2KB - /d</span><br><span class="line">[17:04:16] 500 -    2KB - /e</span><br><span class="line">[17:04:19] 200 -   15KB - /favicon.ico</span><br><span class="line">[17:04:24] 400 -   18B  - /graphql/schema.xml</span><br><span class="line">[17:04:24] 400 -   18B  - /graphql/graphql</span><br><span class="line">[17:04:24] 400 -   18B  - /graphql/schema.yaml</span><br><span class="line">[17:04:24] 400 -   18B  - /graphql/console/</span><br><span class="line">[17:04:24] 400 -   18B  - /graphql/schema.json</span><br><span class="line">[17:04:24] 400 -   18B  - /graphql/console</span><br><span class="line">[17:04:24] 400 -   18B  - /graphql/</span><br><span class="line">[17:04:24] 400 -   18B  - /graphql</span><br><span class="line">[17:04:28] 200 -   11B  - /healthz</span><br><span class="line">[17:04:28] 200 -    3KB - /home</span><br><span class="line">[17:04:28] 200 -    3KB - /home.html</span><br><span class="line">[17:04:29] 302 -   23B  - /i  -&gt;  /</span><br><span class="line">[17:04:40] 200 -    2KB - /login</span><br><span class="line">[17:04:41] 500 -    2KB - /login/cpanel.aspx</span><br><span class="line">[17:04:41] 500 -    2KB - /login/cpanel.php</span><br><span class="line">[17:04:41] 500 -    2KB - /login/cpanel.js</span><br><span class="line">[17:04:41] 500 -    2KB - /login/login</span><br><span class="line">[17:04:41] 500 -    2KB - /login/index</span><br><span class="line">[17:04:41] 500 -    2KB - /login/cpanel.jsp</span><br><span class="line">[17:04:41] 500 -    2KB - /login/cpanel.html</span><br><span class="line">[17:04:41] 500 -    2KB - /login/super</span><br><span class="line">[17:04:41] 302 -   23B  - /logout  -&gt;  /</span><br><span class="line">[17:04:57] 200 -    2KB - /p</span><br><span class="line">[17:05:13] 500 -    2KB - /register</span><br><span class="line">[17:05:14] 200 -    0B  - /robots.txt</span><br><span class="line">[17:05:14] 200 -    2KB - /s</span><br><span class="line">[17:05:14] 200 -    2KB - /s/sfsites/aura</span><br><span class="line">[17:05:34] 200 -    2KB - /t</span><br><span class="line"></span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;存在 &#x2F;login 登录界面，&#x2F;healthz api，暂时搁置&#x3D;&#x3D;</p>
+<p>将例子中的域名加入hosts，并访问，发现也是一个登录页面，再次扫描目录看看</p>
 
     </div>
 
@@ -310,7 +335,10 @@
     <a href="/2025/04/09/%E6%98%A5%E7%A7%8B%E4%BA%91%E5%A2%83-CVE-2024-9047-WordPress-FileUpload-plugin/" rel="prev" title="春秋云境-CVE-2024-9047-WordPress_FileUpload_plugin">
       <i class="fa fa-chevron-left"></i> 春秋云境-CVE-2024-9047-WordPress_FileUpload_plugin
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2025/04/11/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91k8s%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="next" title="【取证】k8s集群服务器">
+      【取证】k8s集群服务器 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -383,7 +411,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -396,7 +424,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -435,12 +463,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">32k</span>
+    <span title="Symbols count total">41k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">29 mins.</span>
+    <span title="Reading time total">37 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

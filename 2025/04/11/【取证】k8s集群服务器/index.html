@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"r3tr0y.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="Welcome to hexo! This is your very first post.">
+  <meta name="description" content="k8s服务器取证相关知识">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://r3tr0y.github.io/2025/03/30/hello-world/index.html">
+<meta property="og:title" content="【取证】k8s集群服务器">
+<meta property="og:url" content="http://r3tr0y.github.io/2025/04/11/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91k8s%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="r3tr0&#39;s blog">
-<meta property="og:description" content="Welcome to hexo! This is your very first post.">
+<meta property="og:description" content="k8s服务器取证相关知识">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-03-30T05:47:34.356Z">
-<meta property="article:modified_time" content="2025-03-31T16:52:07.680Z">
+<meta property="article:published_time" content="2025-04-11T03:54:57.000Z">
+<meta property="article:modified_time" content="2025-04-11T04:25:52.623Z">
 <meta property="article:author" content="r3tr0">
+<meta property="article:tag" content="forensics">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://r3tr0y.github.io/2025/03/30/hello-world/">
+<link rel="canonical" href="http://r3tr0y.github.io/2025/04/11/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91k8s%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
 
 <script id="page-configurations">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>Hello World | r3tr0's blog</title>
+  <title>【取证】k8s集群服务器 | r3tr0's blog</title>
   
 
 
@@ -190,7 +191,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/03/30/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/04/11/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91k8s%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -203,7 +204,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          【取证】k8s集群服务器
         </h1>
 
         <div class="post-meta">
@@ -212,16 +213,19 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2025-03-30 13:47:34" itemprop="dateCreated datePublished" datetime="2025-03-30T13:47:34+08:00">2025-03-30</time>
+              <time title="Created: 2025-04-11 11:54:57 / Modified: 12:25:52" itemprop="dateCreated datePublished" datetime="2025-04-11T11:54:57+08:00">2025-04-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-04-01 00:52:07" itemprop="dateModified" datetime="2025-04-01T00:52:07+08:00">2025-04-01</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
               </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+                </span>
+            </span>
 
           <br>
             <span class="post-meta-item" title="Symbols count in article">
@@ -229,7 +233,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>367</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -238,7 +242,7 @@
                 <span class="post-meta-item-text">Reading time &asymp;</span>
               <span>1 mins.</span>
             </span>
-            <div class="post-description">Welcome to hexo! This is your very first post.</div>
+            <div class="post-description">k8s服务器取证相关知识</div>
 
         </div>
       </header>
@@ -249,19 +253,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <h1 id="k8s集群服务器"><a href="#k8s集群服务器" class="headerlink" title="k8s集群服务器"></a>k8s集群服务器</h1><p>k8s可以将不同的服务器连接在一起，实现资源共享，提升运行效率，减少运维成本，但同时对集群服务器的取证流程也会与常规服务器有稍许不同。</p>
+<h2 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h2><blockquote>
+<p>K8s是Kubernetes的简称，是一个开源的容器编排平台，用于自动化部署、扩展和管理容器化应用程序。</p>
+<p>k8s核心组件（大概看看了解一下，这种就是有个印象就行，我也是第一次碰到）</p>
+<p>1.Master节点：K8s的控制平面，负责管理和协调整个集群。包含API Server、Scheduler、Controller Manager等组件，API Server提供了K8s的API接口，用于接收和处理用户的请求；Scheduler负责将Pod调度到合适的节点上；Controller Manager负责管理和维护集群中各种资源的状态。</p>
+<p>2.Node 节点：集群中的工作节点，用于运行容器化应用。每个Node节点上都运行着Kubelet和Container Runtime等组件，Kubelet负责与Master节点通信，接收并执行Master节点下达的任务，管理本地的容器；Container Runtime用于运行容器，如Docker、runc等。</p>
+<p>3.Pod：（后续题目有问到）：K8s中最小的可部署和可管理的计算单元，它可以包含一个或多个紧密相关的容器。这些容器共享网络和存储资源，通常作为一个整体被调度和管理。</p>
+<p>4.Service：用于定义一组Pod的访问策略，为Pod提供一个固定的IP地址和DNS名称，使得其他Pod或外部客户端能够通过这个固定的地址访问到后端的Pod集合，实现服务的发现和负载均衡。</p>
+<p>5.Deployment：用于管理Pod的部署和升级，用户可以通过Deployment来定义Pod的副本数量、镜像版本等信息，K8s会根据Deployment的定义自动创建和管理Pod，并在需要时进行升级和回滚操作。</p>
+<p>————————————————</p>
+<pre><code>                        版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+</code></pre>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/BJYBJ/article/details/145911515">https://blog.csdn.net/BJYBJ/article/details/145911515</a></p>
+</blockquote>
+<h2 id="仿真流程"><a href="#仿真流程" class="headerlink" title="仿真流程"></a>仿真流程</h2><p>首先需要将master节点以及所有的node节点全部放到火眼取证软件中进行数据分析。</p>
+<p>观察各个节点服务器的基本信息，是否标注出了master节点以及node节点，其次观察集群服务器的IP配置，分析其子网掩码，然后利用这些信息设置服务器的网络连接为仅主机模式，然后配置相关IP以及子网掩码。</p>
+<h2 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h2><ul>
+<li><p>语法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl [command] [TYPE] [NAME] [flags]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>command</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># 基础命令</span><br><span class="line">create   # 通过文件名或标准输入创建资源</span><br><span class="line">expose   # 将一个资源公开为一个新的 service</span><br><span class="line">run      # 在集群中运行一个特定的镜像</span><br><span class="line">set      # 在对象上设置特定的功能</span><br><span class="line">get      # 显示一个或多个资源</span><br><span class="line">explain  # 文档参考资料</span><br><span class="line">edit     # 使用默认的编辑器编辑一个资源</span><br><span class="line">delete   # 通过文件名、标准输入、资源名称或标签选择器来删除资源</span><br><span class="line"># 部署命令</span><br><span class="line">rollout  # 管理资源的发布</span><br><span class="line">rolling-update # 对给定的复制控制器滚动更新</span><br><span class="line">scale    # 扩容或缩容Pod数量，Deploy、ReplicaSet、RC或Job</span><br><span class="line">autoscale  # 创建一个自动选择扩容或缩容并设置Pod数量</span><br><span class="line"># 集群管理命令</span><br><span class="line">certificate # 修改证书资源</span><br><span class="line">cluster-info # 显示集群信息</span><br><span class="line">top       # 显示资源使用。需要Heapster运行</span><br><span class="line">cordon    # 标记节点不可调度</span><br><span class="line">uncordon  # 标记节点可调度</span><br><span class="line">drain     # 维护期间排除节点</span><br><span class="line">taint</span><br></pre></td></tr></table></figure></li>
+</ul>
 
     </div>
 
@@ -277,7 +291,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://r3tr0y.github.io/2025/03/30/hello-world/" title="Hello World">http://r3tr0y.github.io/2025/03/30/hello-world/</a>
+    <a href="http://r3tr0y.github.io/2025/04/11/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91k8s%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8/" title="【取证】k8s集群服务器">http://r3tr0y.github.io/2025/04/11/【取证】k8s集群服务器/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -287,6 +301,9 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/forensics/" rel="tag"># forensics</a>
+          </div>
 
         
 
@@ -294,13 +311,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2025/03/30/test-page/" rel="prev" title="test page">
-      <i class="fa fa-chevron-left"></i> test page
+    <a href="/2025/04/10/HTB-WhiteRabbit/" rel="prev" title="HTB-WhiteRabbit">
+      <i class="fa fa-chevron-left"></i> HTB-WhiteRabbit
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2025/03/30/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E9%98%B6%E6%AE%B5/" rel="next" title="信息搜集阶段">
-      信息搜集阶段 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -359,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#k8s%E9%9B%86%E7%BE%A4%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.</span> <span class="nav-text">k8s集群服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86"><span class="nav-number">1.1.</span> <span class="nav-text">前置知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%BF%E7%9C%9F%E6%B5%81%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">仿真流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="nav-number">1.3.</span> <span class="nav-text">基础命令</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
