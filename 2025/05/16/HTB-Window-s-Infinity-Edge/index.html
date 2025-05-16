@@ -20,22 +20,25 @@
     var CONFIG = {"hostname":"r3tr0y.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="逆向相关的取证分析">
+  <meta name="description" content="是一个Hard难度的取证challenge，内容是一个pcap流量包，主要的内容是SharPyShell的入侵流量，流量使用了aes+base64加密">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【取证】程序逆向分析相关">
-<meta property="og:url" content="http://r3tr0y.github.io/2025/04/24/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3/index.html">
+<meta property="og:title" content="HTB-Window&#39;s Infinity Edge">
+<meta property="og:url" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/index.html">
 <meta property="og:site_name" content="r3tr0&#39;s blog">
-<meta property="og:description" content="逆向相关的取证分析">
+<meta property="og:description" content="是一个Hard难度的取证challenge，内容是一个pcap流量包，主要的内容是SharPyShell的入侵流量，流量使用了aes+base64加密">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://r3tr0y.github.io/2025/04/24/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3/image-20230616153327478.png">
-<meta property="article:published_time" content="2025-04-24T01:39:29.000Z">
-<meta property="article:modified_time" content="2025-04-24T06:20:38.361Z">
+<meta property="og:image" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516141610189.png">
+<meta property="og:image" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516165246462.png">
+<meta property="og:image" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516170033384.png">
+<meta property="article:published_time" content="2025-05-16T06:07:53.000Z">
+<meta property="article:modified_time" content="2025-05-16T09:00:43.041Z">
 <meta property="article:author" content="r3tr0">
-<meta property="article:tag" content="forensics">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="HTB">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://r3tr0y.github.io/2025/04/24/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3/image-20230616153327478.png">
+<meta name="twitter:image" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516141610189.png">
 
-<link rel="canonical" href="http://r3tr0y.github.io/2025/04/24/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3/">
+<link rel="canonical" href="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/">
 
 
 <script id="page-configurations">
@@ -48,7 +51,7 @@
   };
 </script>
 
-  <title>【取证】程序逆向分析相关 | r3tr0's blog</title>
+  <title>HTB-Window's Infinity Edge | r3tr0's blog</title>
   
 
 
@@ -193,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/04/24/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3/">
+    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -206,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          【取证】程序逆向分析相关
+          HTB-Window's Infinity Edge
         </h1>
 
         <div class="post-meta">
@@ -217,7 +220,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2025-04-24 09:39:29 / Modified: 14:20:38" itemprop="dateCreated datePublished" datetime="2025-04-24T09:39:29+08:00">2025-04-24</time>
+              <time title="Created: 2025-05-16 14:07:53 / Modified: 17:00:43" itemprop="dateCreated datePublished" datetime="2025-05-16T14:07:53+08:00">2025-05-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -225,7 +228,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+                  <a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a>
                 </span>
             </span>
 
@@ -235,7 +238,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1k</span>
+              <span>657</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -244,7 +247,7 @@
                 <span class="post-meta-item-text">Reading time &asymp;</span>
               <span>1 mins.</span>
             </span>
-            <div class="post-description">逆向相关的取证分析</div>
+            <div class="post-description">是一个Hard难度的取证challenge，内容是一个pcap流量包，主要的内容是SharPyShell的入侵流量，流量使用了aes+base64加密</div>
 
         </div>
       </header>
@@ -255,37 +258,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="【取证】程序逆向分析相关"><a href="#【取证】程序逆向分析相关" class="headerlink" title="【取证】程序逆向分析相关"></a>【取证】程序逆向分析相关</h1><h2 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h2><p>寄存器是用来储存常用数据的，在16&#x2F;32位架构中，包含8个16&#x2F;32位的通用寄存器：AX&#x2F;EAX、 BX&#x2F;EBX、 CX&#x2F;ECX、DX&#x2F;EDX、 SP&#x2F;ESP、BP&#x2F;EBP、DI&#x2F;EDI及SI&#x2F;ESI。 AX&#x2F;EAX、BX&#x2F;EBX、CX&#x2F;ECX、DX&#x2F;EDX在一般情况下作为通用的数据寄存器，用来暂时存放计算过程中所用到的操作数、结果或其他信息。它们还可分为两个独立的8位寄存器使用，命名为AL、AH、BL、BH、CL、CH、DL和DH。除了这些还有其他的寄存器，像IP&#x2F;EIP寄存器存放的一直都是下一条执行指令的地址。在64位中，寄存器都以R开头，例如，RAX、RBX、RCX和RDX这样。</p>
-<p>通常ESP是栈顶地址，EIP是下一条执行指令的地址</p>
-<h2 id="操作指令"><a href="#操作指令" class="headerlink" title="操作指令"></a>操作指令</h2><ul>
-<li><p>数据传送类指令：</p>
-<p>这是使用最频繁的指令，格式为：MOV DEST，SRC      (move)<br>功能：将一个字节、字或双字从源操作数SRC传送至目的操作数DEST。</p>
-<p>push 入栈</p>
-<p>pop 出栈</p>
-</li>
-<li><p>算数、逻辑运算指令：</p>
-</li>
-</ul>
-<p>​	    如add、sub、mul、div、and、or、xor等算数逻辑运算。(add eax,1)   (add eax,ebx) </p>
-<ul>
-<li>控制执行流程指令：<br>cmp：对两个操作数执行减法操作，修改状态标识寄存器Z。<br>test：对两个操作数执行与操作，修改状态标识寄存器。<br>jmp：强制跳转指令。  jump</li>
-<li>条件跳转指令，包括jz、jnz等，这里的z代表的是ZF标志位，如图3，是条件跳转指令表。<br><img src="/2025/04/24/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3/image-20230616153327478.png" alt="image-20230616153327478"></li>
-</ul>
-<h2 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h2><h3 id="勒索病毒"><a href="#勒索病毒" class="headerlink" title="勒索病毒"></a>勒索病毒</h3><ol>
-<li>加密算法：AES，DES，RSA，RC4等</li>
-<li>文件相关：后缀，文件名，监控文件注册表等变化工具：procmon（火绒剑）</li>
-<li>相关提示信息：警告.txt，钱包地址</li>
-</ol>
-<h3 id="远控木马"><a href="#远控木马" class="headerlink" title="远控木马"></a>远控木马</h3><ol>
-<li>C2地址，端口，执行功能（监控键盘记录，监控屏幕）</li>
-</ol>
-<h3 id="C-C-逆向"><a href="#C-C-逆向" class="headerlink" title="C&#x2F;C++逆向"></a>C&#x2F;C++逆向</h3><h3 id="python逆向"><a href="#python逆向" class="headerlink" title="python逆向"></a>python逆向</h3><p>混淆的py源码</p>
-<p>pyc文件，反编译方法：uncompyle3，pycdc，在线网站，转字节码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> dis</span><br><span class="line"><span class="keyword">import</span> marshal</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>() <span class="keyword">as</span> f:</span><br><span class="line">	f.read(<span class="number">16</span>)</span><br><span class="line">  code = marshal.load(f)</span><br><span class="line">  dis.dis(code)</span><br></pre></td></tr></table></figure>
-
-<p>Pyinstaller 打包的exe：pyinstxtractor-ng</p>
-<p>pyd，cpython：ida</p>
-<h3 id="net逆向"><a href="#net逆向" class="headerlink" title=".net逆向"></a>.net逆向</h3><p>dnspy</p>
+        <h1 id="HTB-Window’s-Infinity-Edge"><a href="#HTB-Window’s-Infinity-Edge" class="headerlink" title="HTB-Window’s Infinity Edge"></a>HTB-Window’s Infinity Edge</h1><p>首先拿到流量包，找到在upload上传的地方的流量</p>
+<p><img src="/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516141610189.png" alt="image-20250516141610189"></p>
+<p>该流量很可能是上传了一个大马，通讯加密的密钥是 string p，根据经验推测很可能是aes加密（其实将数组的内容饭混淆之后可以拿到源码，里面还存有aes的iv值，不过我们推测正确，就不需要反混淆了）。</p>
+<p>后面上传的流量通过base64解码，aes解密后，能够得到原始数据（没有iv值的话，前几个字符会受到影响，但是不影响解题）</p>
+<p>对每段命令进行解密后发现，有一段注入命令，注入了一段shellcode，该shellcode base64解密之后，发现是Potato提权工具，那么threadParameters参数就是执行的命令，base64解密该threadParameters参数之后，发现是gzip压缩格式，再次gzip解压缩，观察发现了命令执行：</p>
+<p><img src="/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516165246462.png" alt="image-20250516165246462"></p>
+<p>增加了一个admin_infinity用户，还在C:\xor.k 的文件中写了<strong>xGk89_Ew</strong> 的字符串，那么只要找出剩余被xor加密的字段就可能找出flag了。</p>
+<p>经过寻找，发现了另一个报文，用了同样的方法，drop了一段shellcode，base64 解密之后，再用gzip解压缩，发现是一串二进制（但是不可执行），其中存在c:\xor.k的明文，证明这串shellcode和该xor文件存在很大关联，但是不知道其中有哪一段是被xor异或加密过的，那么把整个文件都xor解密，然后在shellcode开头增加垃圾字符串来让xor的加密窗口平移，最后得出flag。</p>
+<p><img src="/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516170033384.png" alt="image-20250516170033384"></p>
 
     </div>
 
@@ -301,7 +282,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="http://r3tr0y.github.io/2025/04/24/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3/" title="【取证】程序逆向分析相关">http://r3tr0y.github.io/2025/04/24/【取证】程序逆向分析相关/</a>
+    <a href="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/" title="HTB-Window&#39;s Infinity Edge">http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -312,7 +293,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/forensics/" rel="tag"># forensics</a>
+              <a href="/tags/ctf/" rel="tag"># ctf</a>
+              <a href="/tags/HTB/" rel="tag"># HTB</a>
           </div>
 
         
@@ -321,13 +303,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2025/04/14/HTB-nocturnal/" rel="prev" title="HTB-nocturnal">
-      <i class="fa fa-chevron-left"></i> HTB-nocturnal
+    <a href="/2025/05/13/%E3%80%90%E8%AE%BA%E6%96%87%E3%80%91%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E7%9A%84%E5%88%9D%E6%AD%A5%E6%9E%84%E6%83%B3/" rel="prev" title="【论文】入侵检测综述论文的初步构想">
+      <i class="fa fa-chevron-left"></i> 【论文】入侵检测综述论文的初步构想
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2025/05/13/%E3%80%90%E8%AE%BA%E6%96%87%E3%80%91%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E7%9A%84%E5%88%9D%E6%AD%A5%E6%9E%84%E6%83%B3/" rel="next" title="【论文】入侵检测综述论文的初步构想">
-      【论文】入侵检测综述论文的初步构想 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -386,7 +365,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3"><span class="nav-number">1.</span> <span class="nav-text">【取证】程序逆向分析相关</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">操作指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">题型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8B%92%E7%B4%A2%E7%97%85%E6%AF%92"><span class="nav-number">1.3.1.</span> <span class="nav-text">勒索病毒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E6%8E%A7%E6%9C%A8%E9%A9%AC"><span class="nav-number">1.3.2.</span> <span class="nav-text">远控木马</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-C-%E9%80%86%E5%90%91"><span class="nav-number">1.3.3.</span> <span class="nav-text">C&#x2F;C++逆向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python%E9%80%86%E5%90%91"><span class="nav-number">1.3.4.</span> <span class="nav-text">python逆向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#net%E9%80%86%E5%90%91"><span class="nav-number">1.3.5.</span> <span class="nav-text">.net逆向</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTB-Window%E2%80%99s-Infinity-Edge"><span class="nav-number">1.</span> <span class="nav-text">HTB-Window’s Infinity Edge</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
