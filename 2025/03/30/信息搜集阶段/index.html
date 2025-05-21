@@ -28,7 +28,7 @@
 <meta property="og:description" content="用于记录渗透初期信息搜集阶段的常见姿势，包括：扫描（端口、子域名、目录等）">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-03-30T14:59:20.000Z">
-<meta property="article:modified_time" content="2025-05-21T02:03:27.660Z">
+<meta property="article:modified_time" content="2025-05-21T02:33:16.091Z">
 <meta property="article:author" content="r3tr0">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="hack">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-21 10:03:27" itemprop="dateModified" datetime="2025-05-21T10:03:27+08:00">2025-05-21</time>
+                <time title="Modified: 2025-05-21 10:33:16" itemprop="dateModified" datetime="2025-05-21T10:33:16+08:00">2025-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -396,31 +396,44 @@
 <li><p>安装</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mac</span><br><span class="line">brew install nikto</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><details>
-<summary>点击展开 Mermaid 源码</summary>
-  flowchart TD
-  A[开始：明确目标范围] --> B[被动信息收集]
-  B --> B1[WHOIS 查询]
-  B --> B2[DNS 记录与子域名枚举]
-  B --> B3[SSL证书 & 历史解析]
-  B --> B4[资产搜索引擎（FOFA等）]
-  B --> B5[泄露信息（GitHub、社工）]
-  A --> C[主动信息收集]
-  C --> C1[子域名爆破 & 验证]
-  C --> C2[端口扫描（masscan/nmap）]
-  C --> C3[服务识别 & Banner 抓取]
-  C --> C4[Web 指纹识别（WhatWeb/httpx）]
-  C --> C5[目录爆破 & API 探测]
-  C5 --> D[漏洞信息初探（Nuclei/xray）]
-  D --> E[资产统计与分类]
-  E --> E1[Web资产]
-  E --> E2[主机/端口资产]
-  E --> E3[子域名归属关系]
-  E --> E4[是否使用CDN]
-  E --> F[建立资产数据库/表格]
-  F --> G[（可选）资产可视化]
-  G --> H[结束：为漏洞扫描与攻击面分析做准备]
-  </details>
+<h2 id="流程图mod"><a href="#流程图mod" class="headerlink" title="流程图mod"></a>流程图mod</h2><!-- htmlmin:ignore -->
+
+<details>
+<summary>MAP</summary>
+
+<pre class="mermaid">flowchart TD
+  A["开始：明确目标范围"] --> B["被动信息收集"]
+  B --> B1["WHOIS 查询"]
+  B --> B2["DNS 记录与子域名枚举"]
+  B --> B3["SSL证书 & 历史解析"]
+  B --> B4["资产搜索引擎（FOFA等）"]
+  B --> B5["泄露信息（GitHub、社工）"]
+
+  A --> C["主动信息收集"]
+  C --> C1["子域名爆破 & 验证"]
+  C --> C2["端口扫描（masscan/nmap）"]
+  C --> C3["服务识别 & Banner 抓取"]
+  C --> C4["Web 指纹识别（WhatWeb/httpx）"]
+  C --> C5["目录爆破 & API 探测"]
+
+  C5 --> D["漏洞信息初探（Nuclei/xray）"]
+
+  D --> E["资产统计与分类"]
+  E --> E1["Web资产"]
+  E --> E2["主机/端口资产"]
+  E --> E3["子域名归属关系"]
+  E --> E4["是否使用CDN"]
+
+  E --> F["建立资产数据库/表格"]
+  F --> G["（可选）资产可视化"]
+
+  G --> H["结束：为漏洞扫描与攻击面分析做准备"]</pre>
+
+</details>
+
+<!-- htmlmin:ignore -->
+
+
 
 
 
@@ -525,7 +538,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">信息搜集流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="nav-number">1.1.</span> <span class="nav-text">被动信息搜集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="nav-number">1.2.</span> <span class="nav-text">主动信息搜集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%84%E7%B1%BB%E5%B7%A5%E5%85%B7%E7%94%A8%E6%B3%95%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">各类工具用法及作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nmap"><span class="nav-number">2.0.1.</span> <span class="nav-text">nmap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rustscan"><span class="nav-number">2.0.2.</span> <span class="nav-text">rustscan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ffuf"><span class="nav-number">2.0.3.</span> <span class="nav-text">ffuf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dirsearch"><span class="nav-number">2.0.4.</span> <span class="nav-text">dirsearch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gobuster"><span class="nav-number">2.0.5.</span> <span class="nav-text">gobuster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nikto"><span class="nav-number">2.0.6.</span> <span class="nav-text">nikto</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">2.1.</span> <span class="nav-text">流程图</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">信息搜集流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="nav-number">1.1.</span> <span class="nav-text">被动信息搜集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="nav-number">1.2.</span> <span class="nav-text">主动信息搜集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%84%E7%B1%BB%E5%B7%A5%E5%85%B7%E7%94%A8%E6%B3%95%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">各类工具用法及作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nmap"><span class="nav-number">2.0.1.</span> <span class="nav-text">nmap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rustscan"><span class="nav-number">2.0.2.</span> <span class="nav-text">rustscan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ffuf"><span class="nav-number">2.0.3.</span> <span class="nav-text">ffuf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dirsearch"><span class="nav-number">2.0.4.</span> <span class="nav-text">dirsearch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gobuster"><span class="nav-number">2.0.5.</span> <span class="nav-text">gobuster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nikto"><span class="nav-number">2.0.6.</span> <span class="nav-text">nikto</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BEmod"><span class="nav-number">2.1.</span> <span class="nav-text">流程图mod</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -650,6 +663,19 @@
 
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
