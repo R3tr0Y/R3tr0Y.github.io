@@ -28,7 +28,7 @@
 <meta property="og:description" content="用于记录渗透初期信息搜集阶段的常见姿势，包括：扫描（端口、子域名、目录等）">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-03-30T14:59:20.000Z">
-<meta property="article:modified_time" content="2025-05-21T01:58:46.146Z">
+<meta property="article:modified_time" content="2025-05-21T02:03:27.660Z">
 <meta property="article:author" content="r3tr0">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="hack">
@@ -222,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-21 09:58:46" itemprop="dateModified" datetime="2025-05-21T09:58:46+08:00">2025-05-21</time>
+                <time title="Modified: 2025-05-21 10:03:27" itemprop="dateModified" datetime="2025-05-21T10:03:27+08:00">2025-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,7 +240,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>1.9k</span>
+              <span>2.3k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -396,7 +396,35 @@
 <li><p>安装</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mac</span><br><span class="line">brew install nikto</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><details>
+<summary>点击展开 Mermaid 源码</summary>
+  flowchart TD
+  A[开始：明确目标范围] --> B[被动信息收集]
+  B --> B1[WHOIS 查询]
+  B --> B2[DNS 记录与子域名枚举]
+  B --> B3[SSL证书 & 历史解析]
+  B --> B4[资产搜索引擎（FOFA等）]
+  B --> B5[泄露信息（GitHub、社工）]
+  A --> C[主动信息收集]
+  C --> C1[子域名爆破 & 验证]
+  C --> C2[端口扫描（masscan/nmap）]
+  C --> C3[服务识别 & Banner 抓取]
+  C --> C4[Web 指纹识别（WhatWeb/httpx）]
+  C --> C5[目录爆破 & API 探测]
+  C5 --> D[漏洞信息初探（Nuclei/xray）]
+  D --> E[资产统计与分类]
+  E --> E1[Web资产]
+  E --> E2[主机/端口资产]
+  E --> E3[子域名归属关系]
+  E --> E4[是否使用CDN]
+  E --> F[建立资产数据库/表格]
+  F --> G[（可选）资产可视化]
+  G --> H[结束：为漏洞扫描与攻击面分析做准备]
+  </details>
+
+
+
+
     </div>
 
     
@@ -563,7 +591,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">66k</span>
+    <span title="Symbols count total">67k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
