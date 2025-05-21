@@ -27,12 +27,14 @@
 <meta property="og:site_name" content="r3tr0&#39;s blog">
 <meta property="og:description" content="用于记录渗透初期信息搜集阶段的常见姿势，包括：扫描（端口、子域名、目录等）">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://r3tr0y.github.io/2025/03/30/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E9%98%B6%E6%AE%B5/%E6%B8%97%E9%80%8F%E5%88%9D%E7%BA%A7%E9%98%B6%E6%AE%B5-7797878-7797887.png">
 <meta property="article:published_time" content="2025-03-30T14:59:20.000Z">
-<meta property="article:modified_time" content="2025-05-21T02:33:16.091Z">
+<meta property="article:modified_time" content="2025-05-21T03:28:22.371Z">
 <meta property="article:author" content="r3tr0">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="hack">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://r3tr0y.github.io/2025/03/30/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E9%98%B6%E6%AE%B5/%E6%B8%97%E9%80%8F%E5%88%9D%E7%BA%A7%E9%98%B6%E6%AE%B5-7797878-7797887.png">
 
 <link rel="canonical" href="http://r3tr0y.github.io/2025/03/30/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E9%98%B6%E6%AE%B5/">
 
@@ -222,7 +224,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-05-21 10:33:16" itemprop="dateModified" datetime="2025-05-21T10:33:16+08:00">2025-05-21</time>
+                <time title="Modified: 2025-05-21 11:28:22" itemprop="dateModified" datetime="2025-05-21T11:28:22+08:00">2025-05-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,7 +242,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>2.3k</span>
+              <span>2.6k</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -349,6 +351,28 @@
 </ul>
 </li>
 </ol>
+<h1 id="资产梳理与统计"><a href="#资产梳理与统计" class="headerlink" title="资产梳理与统计"></a>资产梳理与统计</h1><ol>
+<li><p>分类统计</p>
+<ul>
+<li>Web资产（IP + Port + Title + 组件）</li>
+<li>主机资产（公网&#x2F;内网 IP）</li>
+<li>开放端口&#x2F;服务</li>
+<li>子域名、主域名资产</li>
+<li>CDN &#x2F; 非CDN 区分</li>
+</ul>
+</li>
+<li><p>建立资产数据库</p>
+<ul>
+<li><p>结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;domain&quot;: &quot;target.com&quot;,</span><br><span class="line">  &quot;subdomains&quot;: [...],</span><br><span class="line">  &quot;ips&quot;: [...],</span><br><span class="line">  &quot;cdn&quot;: [...],</span><br><span class="line">  &quot;web&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;url&quot;: &quot;https://sub.target.com&quot;,</span><br><span class="line">      &quot;title&quot;: &quot;Login Page&quot;,</span><br><span class="line">      &quot;tech&quot;: [&quot;PHP&quot;, &quot;Apache&quot;],</span><br><span class="line">      &quot;port&quot;: 443,</span><br><span class="line">      &quot;status_code&quot;: 200</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  &quot;services&quot;: [</span><br><span class="line">    &#123;&quot;ip&quot;: &quot;...&quot;, &quot;port&quot;: 22, &quot;service&quot;: &quot;OpenSSH 7.4&quot;, &quot;vulns&quot;: [&quot;CVE-xxxx-xxxx&quot;]&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>资产可视化</p>
+<ul>
+<li>reconmap（开源信息收集平台）</li>
+</ul>
+</li>
+</ol>
 <h1 id="各类工具用法及作用"><a href="#各类工具用法及作用" class="headerlink" title="各类工具用法及作用"></a>各类工具用法及作用</h1><h3 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h3><ul>
 <li><p>用法</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 全端口扫描 + 服务识别</span><br><span class="line">nmap -sS -Pn -p- -T4 -sV target.com</span><br></pre></td></tr></table></figure></li>
@@ -396,47 +420,7 @@
 <li><p>安装</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mac</span><br><span class="line">brew install nikto</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="流程图mod"><a href="#流程图mod" class="headerlink" title="流程图mod"></a>流程图mod</h2><!-- htmlmin:ignore -->
-
-<details>
-<summary>MAP</summary>
-
-<pre class="mermaid">flowchart TD
-  A["开始：明确目标范围"] --> B["被动信息收集"]
-  B --> B1["WHOIS 查询"]
-  B --> B2["DNS 记录与子域名枚举"]
-  B --> B3["SSL证书 & 历史解析"]
-  B --> B4["资产搜索引擎（FOFA等）"]
-  B --> B5["泄露信息（GitHub、社工）"]
-
-  A --> C["主动信息收集"]
-  C --> C1["子域名爆破 & 验证"]
-  C --> C2["端口扫描（masscan/nmap）"]
-  C --> C3["服务识别 & Banner 抓取"]
-  C --> C4["Web 指纹识别（WhatWeb/httpx）"]
-  C --> C5["目录爆破 & API 探测"]
-
-  C5 --> D["漏洞信息初探（Nuclei/xray）"]
-
-  D --> E["资产统计与分类"]
-  E --> E1["Web资产"]
-  E --> E2["主机/端口资产"]
-  E --> E3["子域名归属关系"]
-  E --> E4["是否使用CDN"]
-
-  E --> F["建立资产数据库/表格"]
-  F --> G["（可选）资产可视化"]
-
-  G --> H["结束：为漏洞扫描与攻击面分析做准备"]</pre>
-
-</details>
-
-<!-- htmlmin:ignore -->
-
-
-
-
-
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="/2025/03/30/%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E9%98%B6%E6%AE%B5/%E6%B8%97%E9%80%8F%E5%88%9D%E7%BA%A7%E9%98%B6%E6%AE%B5-7797878-7797887.png" alt="渗透初级阶段"></p>
 
     </div>
 
@@ -538,7 +522,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">信息搜集流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="nav-number">1.1.</span> <span class="nav-text">被动信息搜集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="nav-number">1.2.</span> <span class="nav-text">主动信息搜集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%84%E7%B1%BB%E5%B7%A5%E5%85%B7%E7%94%A8%E6%B3%95%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">各类工具用法及作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nmap"><span class="nav-number">2.0.1.</span> <span class="nav-text">nmap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rustscan"><span class="nav-number">2.0.2.</span> <span class="nav-text">rustscan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ffuf"><span class="nav-number">2.0.3.</span> <span class="nav-text">ffuf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dirsearch"><span class="nav-number">2.0.4.</span> <span class="nav-text">dirsearch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gobuster"><span class="nav-number">2.0.5.</span> <span class="nav-text">gobuster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nikto"><span class="nav-number">2.0.6.</span> <span class="nav-text">nikto</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BEmod"><span class="nav-number">2.1.</span> <span class="nav-text">流程图mod</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">信息搜集流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A2%AB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="nav-number">1.1.</span> <span class="nav-text">被动信息搜集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E5%8A%A8%E4%BF%A1%E6%81%AF%E6%90%9C%E9%9B%86"><span class="nav-number">1.2.</span> <span class="nav-text">主动信息搜集</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%84%E4%BA%A7%E6%A2%B3%E7%90%86%E4%B8%8E%E7%BB%9F%E8%AE%A1"><span class="nav-number">2.</span> <span class="nav-text">资产梳理与统计</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%84%E7%B1%BB%E5%B7%A5%E5%85%B7%E7%94%A8%E6%B3%95%E5%8F%8A%E4%BD%9C%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">各类工具用法及作用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#nmap"><span class="nav-number">3.0.1.</span> <span class="nav-text">nmap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rustscan"><span class="nav-number">3.0.2.</span> <span class="nav-text">rustscan</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ffuf"><span class="nav-number">3.0.3.</span> <span class="nav-text">ffuf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dirsearch"><span class="nav-number">3.0.4.</span> <span class="nav-text">dirsearch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gobuster"><span class="nav-number">3.0.5.</span> <span class="nav-text">gobuster</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nikto"><span class="nav-number">3.0.6.</span> <span class="nav-text">nikto</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">3.1.</span> <span class="nav-text">流程图</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
