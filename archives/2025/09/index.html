@@ -20,25 +20,15 @@
     var CONFIG = {"hostname":"r3tr0y.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
   </script>
 
-  <meta name="description" content="是一个Hard难度的取证challenge，内容是一个pcap流量包，主要的内容是SharPyShell的入侵流量，流量使用了aes+base64加密">
-<meta property="og:type" content="article">
-<meta property="og:title" content="HTB-Window&#39;s Infinity Edge">
-<meta property="og:url" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="r3tr0&#39;s blog">
+<meta property="og:url" content="http://r3tr0y.github.io/archives/2025/09/index.html">
 <meta property="og:site_name" content="r3tr0&#39;s blog">
-<meta property="og:description" content="是一个Hard难度的取证challenge，内容是一个pcap流量包，主要的内容是SharPyShell的入侵流量，流量使用了aes+base64加密">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516141610189.png">
-<meta property="og:image" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516165246462.png">
-<meta property="og:image" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516170033384.png">
-<meta property="article:published_time" content="2025-05-16T06:07:53.000Z">
-<meta property="article:modified_time" content="2025-05-16T09:09:22.164Z">
 <meta property="article:author" content="r3tr0">
-<meta property="article:tag" content="ctf">
-<meta property="article:tag" content="HTB">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516141610189.png">
 
-<link rel="canonical" href="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/">
+<link rel="canonical" href="http://r3tr0y.github.io/archives/2025/09/">
 
 
 <script id="page-configurations">
@@ -46,12 +36,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'en'
   };
 </script>
 
-  <title>HTB-Window's Infinity Edge | r3tr0's blog</title>
+  <title>Archive | r3tr0's blog</title>
   
 
 
@@ -189,133 +179,50 @@
         <div class="content-wrap">
           
 
-          <div class="content post posts-expand">
+          <div class="content archive">
             
 
-    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="r3tr0">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="r3tr0's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          HTB-Window's Infinity Edge
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2025-05-16 14:07:53 / Modified: 17:09:22" itemprop="dateCreated datePublished" datetime="2025-05-16T14:07:53+08:00">2025-05-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>649</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-            <div class="post-description">是一个Hard难度的取证challenge，内容是一个pcap流量包，主要的内容是SharPyShell的入侵流量，流量使用了aes+base64加密</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+  
+  <div class="post-block">
+    <div class="posts-collapse">
+      <div class="collection-title">
+        <span class="collection-header">Um..! 16 posts in total. Keep on posting.</span>
+      </div>
 
       
-        <h1 id="HTB-Window’s-Infinity-Edge"><a href="#HTB-Window’s-Infinity-Edge" class="headerlink" title="HTB-Window’s Infinity Edge"></a>HTB-Window’s Infinity Edge</h1><p>首先拿到流量包，找到在upload上传的地方的流量</p>
-<p><img src="/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516141610189.png" alt="image-20250516141610189"></p>
-<p>该流量很可能是上传了一个大马，通讯加密的密钥是 string p，根据经验推测很可能是aes加密（其实将数组的内容反混淆之后可以拿到源码，里面还存有aes的iv值，不过我们推测正确，就不需要反混淆了）。</p>
-<p>后面上传的流量通过base64解码，aes解密后，能够得到原始数据（没有iv值的话，前几个字符会受到影响，但是不影响解题）</p>
-<p>对每段命令进行解密后发现，有一段注入命令，注入了一段shellcode，该shellcode base64解密之后，发现是Potato提权工具，那么threadParameters参数就是执行的命令，base64解密该threadParameters参数之后，发现是gzip压缩格式，再次gzip解压缩，观察发现了命令执行：</p>
-<p><img src="/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516165246462.png" alt="image-20250516165246462"></p>
-<p>增加了一个admin_infinity用户，还在C:\xor.k 的文件中写了<strong>xGk89_Ew</strong> 的字符串，那么只要找出剩余被xor加密的字段就可能找出flag了。</p>
-<p>经过寻找，发现了另一个报文，用了同样的方法，drop了一段shellcode，base64 解密之后，再用gzip解压缩，发现是一串二进制（但是不可执行），其中存在c:\xor.k的明文，证明这串shellcode和该xor文件存在很大关联，但是不知道其中有哪一段是被xor异或加密过的，那么把整个文件都xor解密，然后在shellcode开头增加垃圾字符串来让xor的加密窗口平移，最后得出flag。</p>
-<p><img src="/2025/05/16/HTB-Window-s-Infinity-Edge/image-20250516170033384.png" alt="image-20250516170033384"></p>
-
+    <div class="collection-year">
+      <span class="collection-header">2025</span>
     </div>
 
-    
-    
-    
-        
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
 
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>Post author:  </strong>r3tr0
-  </li>
-  <li class="post-copyright-link">
-    <strong>Post link: </strong>
-    <a href="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/" title="HTB-Window&#39;s Infinity Edge">http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
-  </li>
-</ul>
-</div>
+      <div class="post-meta">
+        <time itemprop="dateCreated"
+              datetime="2025-09-17T09:19:07+08:00"
+              content="2025-09-17">
+          09-17
+        </time>
+      </div>
 
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/09/17/%E6%9F%90%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E5%85%AC%E5%8F%B8%E4%BF%A1%E6%81%AF%E6%B3%84%E9%9C%B2%E5%AF%BC%E8%87%B4rce/" itemprop="url">
+            <span itemprop="name">某人工智能公司信息泄露导致rce</span>
+          </a>
+      </div>
 
-      <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/ctf/" rel="tag"># ctf</a>
-              <a href="/tags/HTB/" rel="tag"># HTB</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2025/05/13/%E3%80%90%E8%AE%BA%E6%96%87%E3%80%91%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B0%E8%AE%BA%E6%96%87%E7%9A%84%E5%88%9D%E6%AD%A5%E6%9E%84%E6%83%B3/" rel="prev" title="【论文】入侵检测综述论文的初步构想">
-      <i class="fa fa-chevron-left"></i> 【论文】入侵检测综述论文的初步构想
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/2025/05/22/%E6%9F%90%E7%94%B5%E8%AF%88TP5%E7%BD%91%E7%AB%99%E7%9A%84%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/" rel="next" title="某电诈TP5网站的渗透记录">
-      某电诈TP5网站的渗透记录 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
-    
+    </header>
   </article>
+
+
+    </div>
+  </div>
   
   
+  
+
   
 
 
@@ -368,7 +275,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTB-Window%E2%80%99s-Infinity-Edge"><span class="nav-number">1.</span> <span class="nav-text">HTB-Window’s Infinity Edge</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
