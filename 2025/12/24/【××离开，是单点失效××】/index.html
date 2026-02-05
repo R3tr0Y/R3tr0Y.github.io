@@ -403,6 +403,7 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -415,6 +416,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+        
       </div>
       <!--/noindex-->
 
@@ -428,7 +430,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -456,6 +458,34 @@
 
     </div>
   </aside>
+  
+  <script>
+  (function() {
+    var checkToc = setInterval(function() {
+      // 检查加密容器是否存在
+      var content = document.getElementById('hexo-blog-encrypt');
+      var toc = document.getElementById('toc-div');
+      
+      if (content) {
+        // 如果内容容器存在，且不是隐藏状态（即已解密）
+        if (content.style.display !== 'none') {
+          if (toc) {
+            toc.style.display = 'block';
+            // 同时触发 NexT 的侧边栏标签切换逻辑，确保 TOC 标签是激活状态
+            var tocLi = document.querySelector('.sidebar-nav-toc');
+            if (tocLi) tocLi.click(); 
+          }
+          clearInterval(checkToc);
+        }
+      } else {
+        // 如果根本没有加密容器（普通文章），停止检查
+        clearInterval(checkToc);
+      }
+    }, 500);
+    setTimeout(function() { clearInterval(checkToc); }, 8000); // 8秒后自动停止
+  })();
+  </script>
+  
   <div id="sidebar-dimmer"></div>
 
 
@@ -480,12 +510,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">107k</span>
+    <span title="Symbols count total">110k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:37</span>
+    <span title="Reading time total">1:40</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>

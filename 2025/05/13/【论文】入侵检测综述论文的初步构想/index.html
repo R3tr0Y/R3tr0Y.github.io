@@ -361,6 +361,7 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -373,6 +374,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+        
+              <div id="toc-div" class="post-toc animated" style="display:none"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E-MITRE-ATT-CK-%E6%A1%86%E6%9E%B6%E7%9A%84-Linux-%E5%90%8E%E6%B8%97%E9%80%8F%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">基于 MITRE ATT&amp;CK 框架的 Linux 后渗透入侵检测综述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%91%98%E8%A6%81"><span class="nav-number">1.0.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%BC%95%E8%A8%80%EF%BC%88Introduction%EF%BC%89"><span class="nav-number">1.0.2.</span> <span class="nav-text">1. 引言（Introduction）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.0.3.</span> <span class="nav-text">2. 相关技术介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%8E%B0%E6%9C%89%E7%A0%94%E7%A9%B6%E6%A2%B3%E7%90%86"><span class="nav-number">1.0.4.</span> <span class="nav-text">3. 现有研究梳理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E6%8C%91%E6%88%98%E4%B8%8E%E9%9A%BE%E7%82%B9"><span class="nav-number">1.0.5.</span> <span class="nav-text">4. 挑战与难点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%80%BB%E7%BB%93%EF%BC%88Conclusion%EF%BC%89"><span class="nav-number">1.0.6.</span> <span class="nav-text">5. 总结（Conclusion）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%9C%AA%E6%9D%A5%E7%A0%94%E7%A9%B6%E6%96%B9%E5%90%91"><span class="nav-number">1.0.7.</span> <span class="nav-text">6. 未来研究方向</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%99%84%E5%BD%95%E5%BB%BA%E8%AE%AE"><span class="nav-number">1.1.</span> <span class="nav-text">附录建议</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -386,7 +389,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -414,6 +417,34 @@
 
     </div>
   </aside>
+  
+  <script>
+  (function() {
+    var checkToc = setInterval(function() {
+      // 检查加密容器是否存在
+      var content = document.getElementById('hexo-blog-encrypt');
+      var toc = document.getElementById('toc-div');
+      
+      if (content) {
+        // 如果内容容器存在，且不是隐藏状态（即已解密）
+        if (content.style.display !== 'none') {
+          if (toc) {
+            toc.style.display = 'block';
+            // 同时触发 NexT 的侧边栏标签切换逻辑，确保 TOC 标签是激活状态
+            var tocLi = document.querySelector('.sidebar-nav-toc');
+            if (tocLi) tocLi.click(); 
+          }
+          clearInterval(checkToc);
+        }
+      } else {
+        // 如果根本没有加密容器（普通文章），停止检查
+        clearInterval(checkToc);
+      }
+    }, 500);
+    setTimeout(function() { clearInterval(checkToc); }, 8000); // 8秒后自动停止
+  })();
+  </script>
+  
   <div id="sidebar-dimmer"></div>
 
 
@@ -438,12 +469,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">107k</span>
+    <span title="Symbols count total">110k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1:37</span>
+    <span title="Reading time total">1:40</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
   </div>
