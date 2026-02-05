@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2026-02-05 16:14:24 / Modified: 16:24:58" itemprop="dateCreated datePublished" datetime="2026-02-05T16:14:24+08:00">2026-02-05</time>
+              <time title="Created: 2026-02-05 16:14:24 / Modified: 16:27:30" itemprop="dateCreated datePublished" datetime="2026-02-05T16:14:24+08:00">2026-02-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,15 +247,104 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>相关的原因和解决方法在下面的链接可以找到：</p>
-<p><a target="_blank" rel="noopener" href="https://uyoufu.uzoncloud.com/posts/2023/26YRMRD">hexo-blog-encrypt目录消失 | 星辰大海</a></p>
-</blockquote>
-<p>但是已经有些过时，我做一些补充</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>修改<code>themes\next\layout\_macro\sidebar.swig</code>文件，除了上链所作出的修改外，还增加了一段JS代码，目的是处理已经解密后的文章在使用localStorage里的密钥自动解密后，无法自动重新渲染toc的问题。完整代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">&#123;% macro render(display_toc) %&#125;</span><br><span class="line">  &lt;div class=&quot;toggle sidebar-toggle&quot;&gt;</span><br><span class="line">    &lt;span class=&quot;toggle-line toggle-line-first&quot;&gt;&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;toggle-line toggle-line-middle&quot;&gt;&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;toggle-line toggle-line-last&quot;&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;aside class=&quot;sidebar&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;sidebar-inner&quot;&gt;</span><br><span class="line"></span><br><span class="line">      &#123;%- set display_toc = page.toc.enable and display_toc %&#125;</span><br><span class="line"></span><br><span class="line">      &#123;%- if display_toc %&#125;</span><br><span class="line">        &#123;%- if (page.encrypt) %&#125;</span><br><span class="line">          &#123;%- set toc = toc(page.origin, &#123; class: &#x27;nav&#x27;, list_number: page.toc.number, max_depth: page.toc.max_depth &#125;) %&#125;</span><br><span class="line">        &#123;%- else %&#125;</span><br><span class="line">          &#123;%- set toc = toc(page.content, &#123; class: &#x27;nav&#x27;, list_number: page.toc.number, max_depth: page.toc.max_depth &#125;) %&#125;</span><br><span class="line">        &#123;%- endif %&#125;</span><br><span class="line">        &#123;%- set display_toc = toc.length &gt; 1 and display_toc %&#125;</span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line">      &#123;#</span><br><span class="line">        &#123;%- if display_toc %&#125;</span><br><span class="line">          &#123;%- set toc = toc(page.content, &#123; class: &quot;nav&quot;, list_number: page.toc.number, max_depth: page.toc.max_depth &#125;) %&#125;</span><br><span class="line">          &#123;%- set display_toc = toc.length &gt; 1 and display_toc %&#125;</span><br><span class="line">        &#123;%- endif %&#125;</span><br><span class="line">      #&#125;</span><br><span class="line"></span><br><span class="line">      &lt;ul class=&quot;sidebar-nav motion-element&quot;&gt;</span><br><span class="line">        &lt;li class=&quot;sidebar-nav-toc&quot;&gt;</span><br><span class="line">          &#123;&#123; __(&#x27;sidebar.toc&#x27;) &#125;&#125;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">        &lt;li class=&quot;sidebar-nav-overview&quot;&gt;</span><br><span class="line">          &#123;&#123; __(&#x27;sidebar.overview&#x27;) &#125;&#125;</span><br><span class="line">        &lt;/li&gt;</span><br><span class="line">      &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">      &lt;!--noindex--&gt;</span><br><span class="line">      &lt;div class=&quot;post-toc-wrap sidebar-panel&quot;&gt;</span><br><span class="line">        &#123;#</span><br><span class="line">          &#123;%- if display_toc %&#125;</span><br><span class="line">            &lt;div class=&quot;post-toc motion-element&quot;&gt;&#123;&#123; toc &#125;&#125;&lt;/div&gt;</span><br><span class="line">          &#123;%- endif %&#125;</span><br><span class="line">        #&#125;</span><br><span class="line">          &#123;%- if display_toc %&#125;</span><br><span class="line">            &#123;%- if (page.encrypt) %&#125;</span><br><span class="line">              &lt;div id=&quot;toc-div&quot; class=&quot;post-toc animated&quot; style=&quot;display:none&quot;&gt;&#123;&#123; toc &#125;&#125;&lt;/div&gt;</span><br><span class="line">            &#123;%- else %&#125;</span><br><span class="line">              &lt;div class=&quot;post-toc animated&quot;&gt;&#123;&#123; toc &#125;&#125;&lt;/div&gt;</span><br><span class="line">            &#123;%- endif %&#125;</span><br><span class="line">          &#123;%- endif %&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      &lt;!--/noindex--&gt;</span><br><span class="line"></span><br><span class="line">      &lt;div class=&quot;site-overview-wrap sidebar-panel&quot;&gt;</span><br><span class="line">        &#123;&#123; partial(&#x27;_partials/sidebar/site-overview.swig&#x27;, &#123;&#125;, &#123;cache: theme.cache.enable&#125;) &#125;&#125;</span><br><span class="line"></span><br><span class="line">        &#123;&#123;- next_inject(&#x27;sidebar&#x27;) &#125;&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">      &#123;%- if theme.back2top.enable and theme.back2top.sidebar %&#125;</span><br><span class="line">        &lt;div class=&quot;back-to-top motion-element&quot;&gt;</span><br><span class="line">          &lt;i class=&quot;fa fa-arrow-up&quot;&gt;&lt;/i&gt;</span><br><span class="line">          &lt;span&gt;0%&lt;/span&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &#123;%- endif %&#125;</span><br><span class="line"></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/aside&gt;</span><br><span class="line">  &#123;# --- 插入以下 JS 补丁 --- #&#125;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">  (function() &#123;</span><br><span class="line">    var checkToc = setInterval(function() &#123;</span><br><span class="line">      // 检查加密容器是否存在</span><br><span class="line">      var content = document.getElementById(&#x27;hexo-blog-encrypt&#x27;);</span><br><span class="line">      var toc = document.getElementById(&#x27;toc-div&#x27;);</span><br><span class="line">      </span><br><span class="line">      if (content) &#123;</span><br><span class="line">        // 如果内容容器存在，且不是隐藏状态（即已解密）</span><br><span class="line">        if (content.style.display !== &#x27;none&#x27;) &#123;</span><br><span class="line">          if (toc) &#123;</span><br><span class="line">            toc.style.display = &#x27;block&#x27;;</span><br><span class="line">            // 同时触发 NexT 的侧边栏标签切换逻辑，确保 TOC 标签是激活状态</span><br><span class="line">            var tocLi = document.querySelector(&#x27;.sidebar-nav-toc&#x27;);</span><br><span class="line">            if (tocLi) tocLi.click(); </span><br><span class="line">          &#125;</span><br><span class="line">          clearInterval(checkToc);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        // 如果根本没有加密容器（普通文章），停止检查</span><br><span class="line">        clearInterval(checkToc);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, 500);</span><br><span class="line">    setTimeout(function() &#123; clearInterval(checkToc); &#125;, 8000); // 8秒后自动停止</span><br><span class="line">  &#125;)();</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  &#123;# --- 结束插入 --- #&#125;</span><br><span class="line">  &lt;div id=&quot;sidebar-dimmer&quot;&gt;&lt;/div&gt;</span><br><span class="line">&#123;% endmacro %&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <p>通过对themes\next\layout\_macro\sidebar.swig文件进行修改，重构toc显示逻辑</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/02/05/%E3%80%90Hexo%E3%80%91%E5%A6%82%E4%BD%95%E5%9C%A8%E4%BD%BF%E7%94%A8hexo-blog-encrypt%E7%9A%84%E5%90%8C%E6%97%B6%E6%98%BE%E7%A4%BAtoc%EF%BC%9F/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2026/02/05/%E3%80%90%E5%8A%A0%E7%BC%AA%E3%80%91%E6%88%91%E8%BA%AB%E4%B8%8A%E6%9C%89%E4%B8%80%E4%B8%AA%E4%B8%8D%E5%8F%AF%E6%88%98%E8%83%9C%E7%9A%84%E5%A4%8F%E5%A4%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="r3tr0">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="r3tr0's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2026/02/05/%E3%80%90%E5%8A%A0%E7%BC%AA%E3%80%91%E6%88%91%E8%BA%AB%E4%B8%8A%E6%9C%89%E4%B8%80%E4%B8%AA%E4%B8%8D%E5%8F%AF%E6%88%98%E8%83%9C%E7%9A%84%E5%A4%8F%E5%A4%A9/" class="post-title-link" itemprop="url">【加缪】我身上有一个不可战胜的夏天</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2026-02-05 14:29:17 / Modified: 16:26:50" itemprop="dateCreated datePublished" datetime="2026-02-05T14:29:17+08:00">2026-02-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>359</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>1 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>加缪曾说，“我身上有一个不可战胜的夏天”。对于我来说，我身上或许有一个不可战胜的冬天。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2026/02/05/%E3%80%90%E5%8A%A0%E7%BC%AA%E3%80%91%E6%88%91%E8%BA%AB%E4%B8%8A%E6%9C%89%E4%B8%80%E4%B8%AA%E4%B8%8D%E5%8F%AF%E6%88%98%E8%83%9C%E7%9A%84%E5%A4%8F%E5%A4%A9/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -369,95 +458,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2026/02/05/%E3%80%90%E5%8A%A0%E7%BC%AA%E3%80%91%E6%88%91%E8%BA%AB%E4%B8%8A%E6%9C%89%E4%B8%80%E4%B8%AA%E4%B8%8D%E5%8F%AF%E6%88%98%E8%83%9C%E7%9A%84%E5%A4%8F%E5%A4%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="r3tr0">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="r3tr0's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2026/02/05/%E3%80%90%E5%8A%A0%E7%BC%AA%E3%80%91%E6%88%91%E8%BA%AB%E4%B8%8A%E6%9C%89%E4%B8%80%E4%B8%AA%E4%B8%8D%E5%8F%AF%E6%88%98%E8%83%9C%E7%9A%84%E5%A4%8F%E5%A4%A9/" class="post-title-link" itemprop="url">【加缪】我身上有一个不可战胜的夏天</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2026-02-05 14:29:17 / Modified: 14:56:38" itemprop="dateCreated datePublished" datetime="2026-02-05T14:29:17+08:00">2026-02-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/note/" itemprop="url" rel="index"><span itemprop="name">note</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>359</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>加缪曾说，“我身上有一个不可战胜的夏天”。也许对于我来说，我身上或许有一个不可战胜的冬天。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2026/02/05/%E3%80%90%E5%8A%A0%E7%BC%AA%E3%80%91%E6%88%91%E8%BA%AB%E4%B8%8A%E6%9C%89%E4%B8%80%E4%B8%AA%E4%B8%8D%E5%8F%AF%E6%88%98%E8%83%9C%E7%9A%84%E5%A4%8F%E5%A4%A9/">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/03/30/test-page/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -521,101 +521,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2025/03/30/test-page/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="r3tr0">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="r3tr0's blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/05/16/HTB-Window-s-Infinity-Edge/" class="post-title-link" itemprop="url">HTB-Window's Infinity Edge</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2025-05-16 14:07:53" itemprop="dateCreated datePublished" datetime="2025-05-16T14:07:53+08:00">2025-05-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2026-01-19 14:47:34" itemprop="dateModified" datetime="2026-01-19T14:47:34+08:00">2026-01-19</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>649</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>是一个Hard难度的取证challenge，内容是一个pcap流量包，主要的内容是SharPyShell的入侵流量，流量使用了aes+base64加密</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2025/05/16/HTB-Window-s-Infinity-Edge/">
                 Read more &raquo;
               </a>
             </div>
@@ -734,6 +639,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/04/14/HTB-nocturnal/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="r3tr0">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="r3tr0's blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/04/14/HTB-nocturnal/" class="post-title-link" itemprop="url">HTB-nocturnal</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2025-04-14 16:18:54" itemprop="dateCreated datePublished" datetime="2025-04-14T16:18:54+08:00">2025-04-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2026-01-19 14:47:34" itemprop="dateModified" datetime="2026-01-19T14:47:34+08:00">2026-01-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/writeup/" itemprop="url" rel="index"><span itemprop="name">writeup</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>14k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>13 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>尝试的一个非赛季machine，重新锻炼自己的ctf能力</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/04/14/HTB-nocturnal/">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/12/08/React%E6%A1%86%E6%9E%B6%E4%B8%8Brsc%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E7%9A%84%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -829,7 +829,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/04/14/HTB-nocturnal/">
+    <link itemprop="mainEntityOfPage" href="http://r3tr0y.github.io/2025/05/16/HTB-Window-s-Infinity-Edge/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -843,7 +843,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2025/04/14/HTB-nocturnal/" class="post-title-link" itemprop="url">HTB-nocturnal</a>
+            <a href="/2025/05/16/HTB-Window-s-Infinity-Edge/" class="post-title-link" itemprop="url">HTB-Window's Infinity Edge</a>
         </h2>
 
         <div class="post-meta">
@@ -853,7 +853,7 @@
               </span>
               <span class="post-meta-item-text">Posted on</span>
 
-              <time title="Created: 2025-04-14 16:18:54" itemprop="dateCreated datePublished" datetime="2025-04-14T16:18:54+08:00">2025-04-14</time>
+              <time title="Created: 2025-05-16 14:07:53" itemprop="dateCreated datePublished" datetime="2025-05-16T14:07:53+08:00">2025-05-16</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -878,14 +878,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>14k</span>
+              <span>649</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>13 mins.</span>
+              <span>1 mins.</span>
             </span>
 
         </div>
@@ -897,10 +897,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>尝试的一个非赛季machine，重新锻炼自己的ctf能力</p>
+          <p>是一个Hard难度的取证challenge，内容是一个pcap流量包，主要的内容是SharPyShell的入侵流量，流量使用了aes+base64加密</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2025/04/14/HTB-nocturnal/">
+              <a class="btn" href="/2025/05/16/HTB-Window-s-Infinity-Edge/">
                 Read more &raquo;
               </a>
             </div>
